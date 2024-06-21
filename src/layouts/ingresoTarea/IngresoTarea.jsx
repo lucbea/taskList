@@ -1,7 +1,7 @@
 // import { Form } from 'react'
 
 // IngresoTarea.jsx
-import { InputTask } from "../../componentesPrueba/InputTask"
+import { InputTask } from "../../componentes/InputTask"
 import { BoxLay } from "../BoxLay"
 
 export const IngresoTarea = () => {

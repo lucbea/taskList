@@ -1,10 +1,17 @@
 import { Container, CssBaseline } from "@mui/material"
+
 import { IngresoTarea } from './layouts/ingresoTarea/IngresoTarea'
 import { ListaTareas } from './layouts/listaTareas/ListaTareas'
+import { TuComponente } from "./componentes/InputTask2";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 
 function App() {
   return (
-    <div>
+    <>
 
     {/* <ThemeProvider theme={ Theme }> */}
       <CssBaseline/>
@@ -12,10 +19,11 @@ function App() {
         <h2 style={{textAlign: 'center', marginBottom: '10px'}} >LISTA  DE  TAREAS</h2>
         <IngresoTarea />
         <ListaTareas/>
+    {/* <TuComponente/> */}
       </Container>
      {/* </ThemeProvider> */}
      
-    </div>
+    </>
   )
 }
 
