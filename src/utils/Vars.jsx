@@ -1,19 +1,15 @@
-
-
-// Vars.js
 export const Theme = {
   palette: {
     primary: {
-      main: '#FFF', // Color principal
-      dark: '#CCC', // Color oscuro
-      bgBody:'#F2F2F2', // color de fondo por defecto
+      main: '#FFF', 
+      dark: '#CCC', 
+      bgBody:'#F2F2F2', 
     },
   },
   typography: {
-    fontFamily: 'Arial, sans-serif', // Fuente de tipografía
-    // Otras propiedades de tipografía aquí
+    fontFamily: 'Arial, sans-serif',
   },
-  // Otros estilos comunes
+ 
 };
 
   

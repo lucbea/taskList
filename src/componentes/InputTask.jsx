@@ -1,34 +1,38 @@
-
 import  { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Box } from '@mui/material';
+
+import { ArmadoArrayGuardar} from '../layouts/localStorage/LocalStorage';
+
 import { BsCheck2Square } from "react-icons/bs";
 import { v4 as uuidv4 } from 'uuid';
 
 import { formTaskStyles, inputNormal, inputError } from './StyleInputTask'
 
-export const InputTask = () => {
+export const InputTask = ({tareas, setTareas}) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    
     const [prioridad, setPrioridad] = useState(1);
     const today = new Date();
     const year = today.getFullYear();
     let month = today.getMonth() + 1;
     let day = today.getDate();
 
-    // Formatear la fecha como "YYYY-MM-DD"
+    //---- Formatear la fecha como "YYYY-MM-DD" -----
     if (month < 10) { month = '0' + month; }
     if (day < 10) { day = '0' + day; }
     const formattedDate = `${year}-${month}-${day}`;
 
-    const onSubmit = (data, formState) => {
+    const onSubmit = (obj) => {
         const id = uuidv4();
-        console.log("id", id)
-        data.id = id;
-        data.completa = false;
-        data.fechaRealiz = "";
-        setPrioridad(1); // Restablecer prioridad a 1 después de enviar el formulario
-        console.log(data, formState.errors, prioridad);
-        reset(); // Reiniciar el formulario después del envío
+        obj.id = id;
+        obj.realizada = false;
+        obj.fechaRealiz = "";
+        setPrioridad(1); 
+        let tareasActualiz = [...tareas,obj]
+        setTareas(tareasActualiz); 
+        let nuevasTareas = ArmadoArrayGuardar(obj, "nuevaTarea");
+        reset();
     };
 
     return (
@@ -50,8 +54,9 @@ export const InputTask = () => {
                             style={{ ...(errors.tarea ? inputError : inputNormal), ...formTaskStyles.inputStyle }}
                         />
                         {errors.tarea?.type === 'required' && <p role="alert" style={formTaskStyles.labelControl}>Tarea requerida</p>}
-                        {errors.tarea?.type === 'minLength' && <p style={formTaskStyles.labelControl}>Tarea debe tener más de 3 caracteres</p>}
-                        {errors.tarea?.type === 'maxLength' && <p style={formTaskStyles.labelControl}>Se aceptan 50 caracteres como máximo</p>}
+                        {errors.tarea?.type === 'minLength' && <p style={formTaskStyles.labelControl}>Longitud: más de 2 caracteres</p>}
+                        {errors.tarea?.type === 'maxLength' && <p style={formTaskStyles.labelControl}>Longitud: 50 caracteres, máximo</p>}
+                        <p style={{visibility: 'hidden', height: '16px'}}>Guardar espacio</p>
                     </div>
                     <div style={formTaskStyles.inputFechaPrior}>
                         <div style={formTaskStyles.inputFecha}>
@@ -71,14 +76,15 @@ export const InputTask = () => {
                                 id='inpPrioridad'
                                 type="range"
                                 name="prioridad"
-                                defaultValue={1} // Establecer valor inicial dentro del rango permitido
+                                defaultValue={1} 
                                 min={1}
                                 max={5}
                                 step={1}
                                 {...register('prioridad', {
                                     required: true,
                                     min: 1,
-                                    value: prioridad,
+                                    max: 5,
+                                    valueAsNumber: true 
                                 })}
                             />
                             <div style={formTaskStyles.labelMinMax}>

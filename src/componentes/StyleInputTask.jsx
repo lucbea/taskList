@@ -23,6 +23,7 @@ export const formTaskStyles = {
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
+        position:'relative',
     },
     labelSmall: {
         fontSize: '10px',
@@ -44,6 +45,9 @@ export const formTaskStyles = {
         marginBottom: '0',
         paddingLeft: '3px',
         color:'#C72424',  
+        position:'absolute',
+        top:'40px',
+        fontWeight:'600',
     },
     inputTarea: {
         width: '100%',
