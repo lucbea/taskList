@@ -4,10 +4,10 @@
 import { InputTask } from "../../componentes/InputTask"
 import { BoxLay } from "../BoxLay"
 
-export const IngresoTarea = () => {
+export const IngresoTarea = ({tareas, setTareas}) => {
     return(
             <BoxLay>
-                <InputTask/>
+                <InputTask tareas={tareas} setTareas={setTareas}/>
             </BoxLay>
     )
 }
