@@ -16,9 +16,9 @@ const style = {
     p: 4,
 };
 
-export const VentModal = ({id,  tareas, setTareas, open, setOpen, tareaAEdit }) => {
+export const VentModal = ({tareas, setTareas, open, setOpen, tareaAEdit, setTareaAEdit }) => {
     const handleClose = () => setOpen(false);
-
+    console.log("VentModal", tareaAEdit, tareaAEdit.tarea)
     return (
         <div>          
             <Modal
@@ -28,8 +28,8 @@ export const VentModal = ({id,  tareas, setTareas, open, setOpen, tareaAEdit }) 
                 aria-labelledby="keep-mounted-modal-title"
                 aria-describedby="keep-mounted-modal-description"
             >
-                <Box sx={{ ...style, bgcolor: '#F2F2F2', padding:'0px', display:'flex', flexDirection:'column', justifyContent:'space-evenly', minWidth:'276px', width:'90%' }}>
-                 <FormularioEditar tareas={tareas} setTareas={setTareas} tareaAEdit={tareaAEdit} setOpen= {setOpen}/>
+                <Box sx={{ ...style, bgcolor: '#F2F2F2', padding:'0px', display:'flex', flexDirection:'column', justifyContent:'space-evenly', minWidth:'200px', width:'90%' }}>
+                 <FormularioEditar tareas={tareas} setTareas={setTareas} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} setOpen= {setOpen}/>
                 </Box>
             </Modal>
         </div >

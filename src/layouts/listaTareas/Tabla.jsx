@@ -13,8 +13,6 @@ import { Guardar, Recuperar, RecuperarFiltro } from '../localStorage/LocalStorag
 import { VentModal } from '../../componentes/Modal';
 import { Filtros } from '../filtros/Filtros';
 
-//Aquí falta terminar edición y borrado
-
 export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
     let tareasLS;
     let tareaAEditar;
@@ -161,7 +159,7 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                 <p style={{ textAlign: 'center', color: 'red', fontSize: '15pxx' }}>No hay tareas para mostrar.</p>
                 <p style={{ marginTop: '10px', textAlign: 'center', color: 'green', fontSize: '12px' }}>Modifique el filtro o ingrese una nueva tarea.</p></div>
             )}
-            <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} tarAux={tarAux} setTarAux={setTarAux} />
+            <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} setTareaAEdit= {setTareaAEdit} tarAux={tarAux} setTarAux={setTarAux} />
         </>
     );
 }
