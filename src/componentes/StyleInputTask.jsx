@@ -2,11 +2,10 @@ export const formTaskStyles = {
     formCont: {
         display: 'flex',
         gap: '10px',
-        minWidth: '264px',
+        minWidth: '220px',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop:'10px',
-        // borderTop:'1px solid #E1DEDE',
+        paddingTop:'6px',
     },
     inputCont: {
         width: '100%',
@@ -32,7 +31,6 @@ export const formTaskStyles = {
     },
     inputStyle:{
         outline:'none',
-        // borderRadius: '3px',
         paddingInline: '8px',
         paddingBlock: '2px',
         fontSize: '11px',
@@ -80,8 +78,6 @@ export const formTaskStyles = {
     },
     submitBtn: {
         padding: '10px',
-        fontSize: '25px',
-        // marginBlock: '10px',
         width:'53px',
         height:'50px',
         display: 'flex',
@@ -89,12 +85,26 @@ export const formTaskStyles = {
         alignItems: 'center',
         border:'0px solid grey',
         borderRadius:'50%',
-        
+        // marginInline:"5px", 
+        marginBottom:"6px", 
+        fontSize:"30px",
+        '&:hover': { backgroundColor: '#9cc19e63', }, 
     },
+
+    submitBtnRed: {
+        color: 'red', 
+        fonSize:'26px',
+        fontWeight:'400',
+        '&:hover': { backgroundColor: '#bf828275', },
+    },
+
     iconoBtn: {
         display:'flex', 
         alignItems:'center', 
         width: '30px',
+        height:'35px',
+        color:'blue',
+        
     },
 };
 
