@@ -1,15 +1,20 @@
 export const tablaTaskStyles = {
+
+    contTitFilt: { 
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px', 
+        '@media (maxWidth: 650px)': { display:'flex', flexDirection:'column'},
+    },
     titTabla: {
-        borderBottom: '1px solid #E1DEDE'
+        // borderBottom: '1px solid #E1DEDE'
     },
     tableContainer: { 
-        maxHeight: '300px', overflowY: 'auto', position: 'relative' 
+        maxHeight: '290px', overflowY: 'auto', position: 'relative' 
     },
     table: {
-         minWidth: '274px', 
+         minWidth: '220px', 
     },
     tableHead: { 
-        position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#FFF',
+        position: 'sticky', top: 0, zIndex: 1, backgroundColor: '#e2e7e3',
         '@media (max-width: 650px)': { position: 'relative' , height: '0px', display:'none'} 
     },
     tableRowHead: { 
@@ -28,24 +33,18 @@ export const tablaTaskStyles = {
         justifyContent: 'flex-start',
         '@media (max-width: 650px)': { display: 'none', height:'0px'} 
     },
-    // tableCellAction: { 
-    //     padding: '3px', height: '35px', width: '80px', paddingRight: '15px', color:'white', display: 'flex', '@media (max-width: 650px)': { display: 'none' }
-    // },
+   
     tableRow:{ 
         height: '30px',  
         borderTop: '1px solid #F2F2F2',
-        // backgroundColor:'lightblue',
         '@media (max-width: 650px)': {  
         display:'flex',    
         flexDirection: 'column', 
         height: 'auto',
-        // width:'100%',
-        // backgroundColor:'pink',
         } 
     },   
     tableCell: {
-         paddingInline: '3px', 
-        //  paddingLeft: '30px', 
+         paddingInline: '3px',
          paddingBlock: '3px', position: 'relative',
          width: '100%',
     },
@@ -53,7 +52,9 @@ export const tablaTaskStyles = {
         position: 'relative',
     },
     checkBox: { 
-        color: '#33a733 !important', width: '20px', position: 'absolute', top: '0', left: '13px' 
+        color: '#33a733 !important', width: '18px', height:'18px', position: 'absolute', top: '0', left: '13px',
+        '&:hover': { backgroundColor: '#33a733',
+            borderRadius: '6px', },
     },
     tareaTabla: {
         display: 'flex', maxWidth: '100%', 
@@ -74,21 +75,6 @@ export const tablaTaskStyles = {
         justifyContent:'center',
         alignItems: 'center',
     },
-    // palabraPrior: { 
-    //      display: 'none', 
-    //      marginRight: '3px', 
-    //      width:'57px',
-    //      backgroundColor:'green',
-    //      textAlign:'left',
-    //      borderBottom:'2px solid red',
-    //     '@media (maxWidth: 650px)': { 
-    //         fontSize: '12px', 
-    //     justifyContent:'center',
-    //     display: 'flex',
-    //     borderBottom:'2px solid blue',
-
-    //        }
-    // },
     palabraPrior: {
         marginRight: '3px',
         width: '57px',
@@ -103,27 +89,23 @@ export const tablaTaskStyles = {
             borderBottom: '2px solid blue',
         },
     },
-
-
     contIconosTabla: {
-        
-        width: '120px',
-        // paddingRight: '14px',
+        width: '70px',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center', 
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        gap: '20px',
+        marginRight: '25px',        
         '@media screen and (maxWidth: 650px)': { 
-            // flexDirection: 'column',
-            // alignItems: 'center',
-            // justifyContent: 'center'
             gap: '15px',
-            marginRight: '30px',
+            marginRight: '30px', 
         }
     },
-    iconoBtn: { marginLine: '5px', 
-        // color: '#000', 
-        width: '35px', height: '25px', fontSize: '15px', '@media (max-width: 650px)': { fontSize: '15px' } }
-
-
+    iconoBtn: { 
+        marginLine: '5px', 
+        width: '30px', height: '30px', fontSize: '18px', 
+        '@media (max-width: 650px)': { fontSize: '15px' },
+        '&:hover': { backgroundColor: '#00000012' },
+    }
 }

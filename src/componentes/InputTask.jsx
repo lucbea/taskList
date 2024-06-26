@@ -1,43 +1,49 @@
-import  { useState } from 'react';
+
+import { useState} from 'react';
 import { useForm } from "react-hook-form";
 import { Box } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
 
-import { ArmadoArrayGuardar} from '../layouts/localStorage/LocalStorage';
+import { ArmadoArrayGuardar, Guardar } from '../layouts/localStorage/LocalStorage';
 
 import { BsCheck2Square } from "react-icons/bs";
 import { v4 as uuidv4 } from 'uuid';
 
 import { formTaskStyles, inputNormal, inputError } from './StyleInputTask'
 
-export const InputTask = ({tareas, setTareas}) => {
+export const InputTask = ({ tareas, setTareas, filtro, setFiltro }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    
+
     const [prioridad, setPrioridad] = useState(1);
     const today = new Date();
     const year = today.getFullYear();
     let month = today.getMonth() + 1;
     let day = today.getDate();
 
-    //---- Formatear la fecha como "YYYY-MM-DD" -----
+    // Formatear la fecha como "YYYY-MM-DD"
     if (month < 10) { month = '0' + month; }
     if (day < 10) { day = '0' + day; }
     const formattedDate = `${year}-${month}-${day}`;
 
-    const onSubmit = (obj) => {
+    const onSubmit = (obj, formState) => {
         const id = uuidv4();
         obj.id = id;
         obj.realizada = false;
         obj.fechaRealiz = "";
         setPrioridad(1); 
-        let tareasActualiz = [...tareas,obj]
+
+        let tareasActualiz = [...tareas, obj]
+        
         setTareas(tareasActualiz); 
         let nuevasTareas = ArmadoArrayGuardar(obj, "nuevaTarea");
-        reset();
+        setTareas(nuevasTareas)
+        reset(); 
+        setFiltro("TODAS");
+        Guardar("filtro", "TODAS")
     };
 
     return (
         <>
-            <h4>INGRESO DE TAREA</h4>
             <form onSubmit={handleSubmit(onSubmit)} style={formTaskStyles.formCont}>
                 <Box sx={formTaskStyles.inputCont}>
                     <div style={formTaskStyles.tareaInput}>
@@ -56,9 +62,9 @@ export const InputTask = ({tareas, setTareas}) => {
                         {errors.tarea?.type === 'required' && <p role="alert" style={formTaskStyles.labelControl}>Tarea requerida</p>}
                         {errors.tarea?.type === 'minLength' && <p style={formTaskStyles.labelControl}>Longitud: más de 2 caracteres</p>}
                         {errors.tarea?.type === 'maxLength' && <p style={formTaskStyles.labelControl}>Longitud: 50 caracteres, máximo</p>}
-                        <p style={{visibility: 'hidden', height: '16px'}}>Guardar espacio</p>
+                        <p style={{ visibility: 'hidden', height: '16px' }}>Guardar espacio</p>
                     </div>
-                    <div style={formTaskStyles.inputFechaPrior}>
+                    <div style={{...formTaskStyles.inputFechaPrior, display:'none'}}>
                         <div style={formTaskStyles.inputFecha}>
                             <label htmlFor="fechaLim" style={formTaskStyles.labelSmall}>Fecha límite</label>
                             <input
@@ -94,9 +100,9 @@ export const InputTask = ({tareas, setTareas}) => {
                         </div>
                     </div>
                 </Box>
-                <button type="submit" style={formTaskStyles.submitBtn}>
-                    <BsCheck2Square style={formTaskStyles.iconoBtn} />
-                </button>
+                <IconButton type="submit" edge="end" aria-label="grabar" sx={{...formTaskStyles.submitBtn, color: '#329c32',}} >
+                    <BsCheck2Square sx={formTaskStyles.iconoBtn} />
+                </IconButton>
             </form>
         </>
     )

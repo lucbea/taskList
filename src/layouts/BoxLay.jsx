@@ -17,12 +17,6 @@ export const BoxLay = ({ children }) => {
         marginBottom:'15px',
         bgcolor: Theme.palette.primary.main,
         transition: 'background-color 0.3s ease',
-        '@media (min-width: 500px)': {
-          // bgcolor: '#D6DFE4',
-        },
-        // '&:hover': {
-        //   bgcolor: Theme.palette.primary.dark,
-        // },
         fontFamily: Theme.typography.fontFamily,
       }}
     >
