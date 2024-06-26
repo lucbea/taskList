@@ -96,7 +96,7 @@ export const tablaTaskStyles = {
         justifyContent: 'flex-end',
         alignItems: 'center',
         gap: '20px',
-        marginRight: '25px',        
+        marginRight: '18px',        
         '@media screen and (maxWidth: 650px)': { 
             gap: '15px',
             marginRight: '30px', 
