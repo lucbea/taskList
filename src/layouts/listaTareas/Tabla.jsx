@@ -13,6 +13,8 @@ import { Guardar, Recuperar, RecuperarFiltro } from '../localStorage/LocalStorag
 import { VentModal } from '../../componentes/Modal';
 import { Filtros } from '../filtros/Filtros';
 
+//Aquí falta terminar edición y borrado
+
 export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
     let tareasLS;
     let tareaAEditar;
