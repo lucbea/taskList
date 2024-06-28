@@ -12,12 +12,15 @@ import { tablaTaskStyles } from '../../componentes/StyleListTask';
 import { Guardar, Recuperar, RecuperarFiltro } from '../localStorage/LocalStorage';
 import { VentModal } from '../../componentes/Modal';
 import { Filtros } from '../filtros/Filtros';
+import { GetPrioridadText } from '../../componentes/ConversPrioridad';
 
 export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
     let tareasLS;
     let tareaAEditar;
+    let tareaABorrar
     const [open, setOpen] = useState(false);
     const [tareaAEdit, setTareaAEdit] = useState({});
+    const [tareaABorr, setTareaABorr] = useState ({})
     const [montarComponente, setMontarComponente] = useState(false);
     const [montarComponenteBorrar, setMontarComponenteBorrar] = useState(false);
 
@@ -68,6 +71,8 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
 
     const borrarTarea = (id) => {
         tareasLS = Recuperar();
+        tareaABorrar = tareasLS.find(tarea => tarea.id === id);
+        setTareaABorr(tareaABorrar);
         setOpen(true);
         setMontarComponenteBorrar(true);
         // let tareasDepurada = tareasLS.filter(tarea => tarea.id !== id);
@@ -76,22 +81,22 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
     };
 
     // Función para obtener el texto de prioridad según el número
-    const getPrioridadText = (prioridad) => {
-        switch (prioridad) {
-            case 1:
-                return 'Muy baja';
-            case 2:
-                return 'Baja';
-            case 3:
-                return 'Media';
-            case 4:
-                return 'Alta';
-            case 5:
-                return 'Muy alta';
-            default:
-                return '***';
-        }
-    };
+    // const getPrioridadText = (prioridad) => {
+    //     switch (prioridad) {
+    //         case 1:
+    //             return 'Muy baja';
+    //         case 2:
+    //             return 'Baja';
+    //         case 3:
+    //             return 'Media';
+    //         case 4:
+    //             return 'Alta';
+    //         case 5:
+    //             return 'Muy alta';
+    //         default:
+    //             return '***';
+    //     }
+    // };
 
     return (
         <>
@@ -134,7 +139,7 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                                             <div style={tablaTaskStyles.contPrior}>
                                                 <span style={{ ...tablaTaskStyles.palabraPrior, color: realizada ? '#b9c9bb' : 'black', marginTop: '15px' }}>Prioridad: </span>
                                                 <p style={{ color: realizada ? '#b9c9bb' : 'black', width: '60px', textAlign: 'left' }}>
-                                                    {getPrioridadText(prioridad)}
+                                                    {GetPrioridadText (prioridad)}
                                                 </p>
                                             </div>
                                             <div style={tablaTaskStyles.contIconosTabla}>
@@ -159,7 +164,7 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                 </div>
             )}
           
-                <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} montarComponente={montarComponente} setMontarComponente={setMontarComponente} montarComponenteBorrar />
+                <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit}  tareaABorr= {tareaABorr} setTareaABorr={setTareaABorr} montarComponente={montarComponente} setMontarComponente={setMontarComponente} montarComponenteBorrar = {montarComponenteBorrar} setMontarComponenteBorrar = {setMontarComponenteBorrar} />
           
         </>
     );

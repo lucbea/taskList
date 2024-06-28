@@ -84,7 +84,7 @@ export const tablaTaskStyles = {
         display: 'none', // Valor por defecto
         '@media (maxWidth: 650px)': {
             display: 'block', // Se oculta en pantallas pequeñas
-            fontSize: '12px',
+            fontSize: '35px',
             justifyContent: 'center',
             borderBottom: '2px solid blue',
         },

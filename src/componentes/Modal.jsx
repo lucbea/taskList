@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
 import { FormularioEditar } from './FormularioEditar';
+import { MensajeBorrar } from './MensajeBorrar';
 
 const style = {
     position: 'absolute',
@@ -16,7 +17,7 @@ const style = {
     p: 4,
 };
 
-export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTareaAEdit, montarComponente, setMontarComponente }) => {
+export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTareaAEdit, tareaABorr, setTareaABorr, montarComponente, setMontarComponente, montarComponenteBorrar, setMontarComponenteBorrar }) => {
     const handleClose = () => {
         setMontarComponente(false);
         setOpen(false);
@@ -32,9 +33,12 @@ export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTar
                 aria-labelledby="keep-mounted-modal-title"
                 aria-describedby="keep-mounted-modal-description"
             >
-                <Box sx={{ ...style, bgcolor: '#F2F2F2', padding: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', minWidth: '200px', width: '90%', maxWidth: '300px' }}>
-                {montarComponente && (
-                        <FormularioEditar tareas={tareas} setTareas={setTareas} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} setOpen={setOpen} montarComponente={montarComponente} setMontarComponente={setMontarComponente}/>
+                <Box sx={{ ...style, bgcolor: '#F2F2F2', padding: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', minWidth: '200px', width: '90%', maxWidth: '300px', height: 'auto', border: '1px solid #6e6b6b' }}>
+                    {montarComponente && (
+                        <FormularioEditar tareas={tareas} setTareas={setTareas} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} setOpen={setOpen} montarComponente={montarComponente} setMontarComponente={setMontarComponente} />
+                    )}
+                    {montarComponenteBorrar && (
+                        <MensajeBorrar tareas={tareas} setTareas={setTareas} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} setOpen={setOpen} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} />
                 )}
                 </Box>
             </Modal>

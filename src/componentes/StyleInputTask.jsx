@@ -97,6 +97,10 @@ export const formTaskStyles = {
         fontWeight:'400',
         '&:hover': { backgroundColor: '#bf828275', },
     },
+    submitBtnNormal: {
+        color: 'black',
+        '&:hover': { backgroundColor: '#cbcaca' },
+    },
 
     iconoBtn: {
         display:'flex', 

@@ -7,62 +7,54 @@ import { ArmadoArrayGuardar } from '../layouts/localStorage/LocalStorage';
 import { formTaskStyles } from './StyleInputTask';
 
 export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit, setOpen, montarComponente, setMontarComponente }) => {
-    const [tareaTextArea, setTareaTextArea] = useState("!");
-    console.log(tareaAEdit.tarea, tareaAEdit)
+    const [tareaTextArea, setTareaTextArea] = useState("");
 
-    useEffect(() => {
-        // Actualizamos el estado del textArea con la tarea actual
-        setTareaTextArea(tareaAEdit.tarea);
-    }, []);
+    // useEffect(() => {
+    //     // Actualizamos el estado del textArea con la tarea actual
+    //     setTareaTextArea(tareaAEdit.tarea);
+    // }, []);
 
     const [error, setError] = useState(false);
 
-const handleTarea = () => {
-    if (tareaAEdit.tarea) {
-        console.log("haytarea para mostrar:", tareaAEdit.tarea)
-        setTareaTextArea(tareaAEdit.tarea)}
-}
+
 
     const handleChangeTarea = (e) => {
         setTareaTextArea(tareaAEdit.tarea)
         const auxTarea = e.target.value;
-        setTareaTextArea(auxTarea); // Actualizar el estado con el nuevo valor del textarea
-
-        // Validar la longitud de la tarea
+        setTareaTextArea(auxTarea); 
         if (auxTarea.length < 3 || auxTarea.length > 50) {
-            setError(true); // Mostrar error si la longitud es incorrecta
+            setError(true); 
         } else {
-            setError(false); // Ocultar error si la longitud es correcta
+            setError(false); 
         }
     };
 
     const editando = () => {
         const tareaEditada = {
             id: tareaAEdit.id,
-            tarea: tareaTextArea, // Usamos la tarea actualizada
-            fechaLim: tareaAEdit.fechaLim, // Mantenemos la fecha límite original
-            prioridad: tareaAEdit.prioridad, // Mantenemos la prioridad original
-            realizada: tareaAEdit.realizada // Mantenemos el estado de realizada original
+            tarea: tareaTextArea, 
+            fechaLim: tareaAEdit.fechaLim, 
+            prioridad: tareaAEdit.prioridad, 
+            realizada: tareaAEdit.realizada 
         };
-        setTareaTextArea('');
+        // setTareaTextArea('');
         if (tareaTextArea.length > 2 && tareaTextArea.length < 50) {
             const tareasActualizadas = tareas.map(tarea => tarea.id === tareaAEdit.id ? tareaEditada : tarea);
             setTareas(tareasActualizadas);
 
             ArmadoArrayGuardar(tareaEditada, "edicion");
-            setTareaTextArea(''); // Limpiamos el textArea después de editar
+            // setTareaTextArea(''); 
             setError(false);
             setTareaAEdit({});
             setMontarComponente(false);
             setOpen(false);
-        
     }
 };
 
     const cancelando = () => {
-        // No se guardan los cambios y se cierra el formulario
-        setTareaTextArea(''); // Limpiamos el textArea si se estaba editando
+        // setTareaTextArea(''); 
         setError(false);
+        setMontarComponente(false);
         setOpen(false);
     };
 
