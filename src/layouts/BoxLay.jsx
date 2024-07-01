@@ -3,7 +3,6 @@ import { Theme } from '../utils/Vars'
 
 export const BoxLay = ({ children }) => {
   return (
-
     <Box
       sx={{
         width: '100%',

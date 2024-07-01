@@ -10,13 +10,14 @@ import { Recuperar, Guardar } from '../layouts/localStorage/LocalStorage';
 import { formTaskStyles } from './StyleInputTask';
 import { stylesModal } from './StylesModal';
 import { GetPrioridadText } from './ConversPrioridad';
-import { ConvertirFechaAD } from './ConvertirFechaAD';
+import { FechaAAAAMMDD, FechaLS_AAAAMMDD, FechaLS_DDMMAAA } from './ConvertirFecha';
+import { FechaPasada } from './FechaPasada';
 
-export const MensajeBorrar = ({ tareas, setTareas, tareaABorr, setTareaAborr, setOpen, montarComponenteBorrar, setMontarComponenteBorrar }) => {
-    console.log(tareaABorr.tarea, tareaABorr)
+export const MensajeBorrar = ({ tareas, setTareas, tareaABorr, setTareaAborr, setOpen, montarComponenteBorrar, setMontarComponenteBorrar, tiempoVencido, setTiempoVencido }) => {
     let tareasLS = Recuperar();
-    let tiempoVencido = false;
-
+    
+    let alertaTiempo = FechaPasada (tareaABorr)
+   
     const borrando = () => {
         tareasLS = Recuperar();
         let tareasDepurada = tareasLS.filter(tarea => tarea.id !== tareaABorr.id);
@@ -32,16 +33,8 @@ export const MensajeBorrar = ({ tareas, setTareas, tareaABorr, setTareaAborr, se
     };
 
     const muestraFecha = () => {
-
-         const fechaDA = ConvertirFechaAD (tareaABorr.fechaLim);
-         const hoy = new Date();
-         const fechaGuard = new Date (tareaABorr.fechaLim)
-         hoy.setHours(0, 0, 0, 0);
-         console.log("hoy", hoy, fechaGuard)
-         hoy > fechaGuard ? tiempoVencido = true : null;
-         console.log("tiempo vencido", tiempoVencido)
+         const fechaDA = FechaLS_DDMMAAA (tareaABorr.fechaLim); 
          return fechaDA
-        //  if fechaDA 
     }
 
     return (
@@ -78,19 +71,22 @@ export const MensajeBorrar = ({ tareas, setTareas, tareaABorr, setTareaAborr, se
                     <span style={{ fontWeight: '500', fontSize: '12px' }}>que tiene prioridad </span> <span style={{fontWeight: '700', fontSize: '12px', paddingLeft:'5px' }}> {GetPrioridadText(tareaABorr.prioridad)}, </span>
                     </div>
                     <div style= {{display:'flex', marginBlock:'5px'}}>
-                    <span style={{ fontWeight: '500', fontSize: '12px' }}>y fecha de límite</span> <span style={{ color: tiempoVencido? 'red': 'orange', fontWeight: '700', fontSize: '12px', paddingLeft:'5px' }}> {muestraFecha()}? </span>
+                    <span style={{ fontWeight: '500', fontSize: '12px', marginTop:'5px' }}>y fecha de límite</span> 
+                    <Box sx={{color: alertaTiempo? 'red': 'blue'}}>
+                    <span style={{ fontWeight: '700', fontSize: '12px', paddingLeft:'5px'}}> {muestraFecha()}? </span>
+                    </Box>
                     </div>
 
 
                 </Box>
             </div >
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '15px', gap: '10px', marginInline: '25px', padding:'12px'}}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end',  gap: '10px', marginInline: '25px', marginBottom:'30px', position:'relative', top:'0px', right:'0px'}}>
                 
-                <IconButton onClick={cancelando} type="submit" edge="end" aria-label="delete" sx={{ ...formTaskStyles.submitBtn,  ...formTaskStyles.submitBtnNormal }}>
+                <IconButton onClick={cancelando} type="submit" edge="end" aria-label="delete" sx={{ ...formTaskStyles.submitBtn,  ...formTaskStyles.submitBtnNormal, position: 'relative' }}>
                    
                     < TbTrashOff sx={formTaskStyles.iconoBtn} />
                 </IconButton>
-                <IconButton onClick={borrando} type="submit" edge="end" aria-label="cancelar" sx={{ ...formTaskStyles.submitBtn, ...formTaskStyles.submitBtnRed }}>
+                <IconButton onClick={borrando} type="submit" edge="end" aria-label="cancelar" sx={{ ...formTaskStyles.submitBtn, ...formTaskStyles.submitBtnRed, position: 'relative' }}>
                      <TbTrash />
                 </IconButton>
             </Box>
