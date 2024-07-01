@@ -6,6 +6,7 @@ export const formTaskStyles = {
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop:'6px',
+        position: 'relative'
     },
     inputCont: {
         width: '100%',
@@ -23,6 +24,10 @@ export const formTaskStyles = {
         display: 'flex',
         flexDirection: 'column',
         position:'relative',
+        paddingRight:'45px',
+        '@media (min-width: 650px)': {
+            paddingRight:'5px',
+          },
     },
     labelSmall: {
         fontSize: '10px',
@@ -56,6 +61,9 @@ export const formTaskStyles = {
         justifyContent: 'spaceBetween', 
         gap: '10px', 
         alignItems:'flex-start',
+        '@media (min-width: 650px)': {
+            paddingRight:'45px',
+          },
     },
     inputFecha: {
         width: '100px',
@@ -67,6 +75,7 @@ export const formTaskStyles = {
         display: 'flex',
         flexDirection: 'column',
         width: '-webkit-fill-available',
+        minWidth: '110px',
     },
     labelMinMax: {
         display: 'flex',
@@ -77,6 +86,9 @@ export const formTaskStyles = {
         fontSize: '7px',
     },
     submitBtn: {
+        position: 'absolute',
+        top:'8px',
+        right:'0px',
         padding: '10px',
         width:'53px',
         height:'50px',
@@ -86,7 +98,7 @@ export const formTaskStyles = {
         border:'0px solid grey',
         borderRadius:'50%',
         // marginInline:"5px", 
-        marginBottom:"6px", 
+        // marginBottom:"46px",   //Era 6px
         fontSize:"30px",
         '&:hover': { backgroundColor: '#9cc19e63', }, 
     },
@@ -96,6 +108,10 @@ export const formTaskStyles = {
         fonSize:'26px',
         fontWeight:'400',
         '&:hover': { backgroundColor: '#bf828275', },
+    },
+    submitBtnNormal: {
+        color: 'black',
+        '&:hover': { backgroundColor: '#cbcaca' },
     },
 
     iconoBtn: {
