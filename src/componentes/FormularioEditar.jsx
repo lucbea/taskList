@@ -38,7 +38,11 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
             realizada: tareaAEdit.realizada 
         };
         // setTareaTextArea('');
+<<<<<<< HEAD
         if (tareaTextArea.length > 2 && tareaTextArea.length < 51) {
+=======
+        if (tareaTextArea.length > 2 && tareaTextArea.length < 50) {
+>>>>>>> 914809b6fb72efce2516b7786cadbdb8e44b3f45
             const tareasActualizadas = tareas.map(tarea => tarea.id === tareaAEdit.id ? tareaEditada : tarea);
             setTareas(tareasActualizadas);
 

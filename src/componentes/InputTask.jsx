@@ -63,8 +63,13 @@ export const InputTask = ({ tareas, setTareas, filtro, setFiltro }) => {
                         {errors.tarea?.type === 'minLength' && <p style={formTaskStyles.labelControl}>Longitud: más de 2 caracteres</p>}
                         {errors.tarea?.type === 'maxLength' && <p style={formTaskStyles.labelControl}>Longitud: 50 caracteres, máximo</p>}
                         <p style={{ visibility: 'hidden', height: '16px' }}>Guardar espacio</p>
+<<<<<<< HEAD
                     </Box>
                     <Box sx={{...formTaskStyles.inputFechaPrior}}>
+=======
+                    </div>
+                    <div style={{...formTaskStyles.inputFechaPrior}}>
+>>>>>>> 914809b6fb72efce2516b7786cadbdb8e44b3f45
                         <div style={formTaskStyles.inputFecha}>
                             <label htmlFor="fechaLim" style={formTaskStyles.labelSmall}>Fecha límite</label>
                             <input
