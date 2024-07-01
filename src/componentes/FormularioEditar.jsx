@@ -5,23 +5,21 @@ import { BsCheck2Square } from 'react-icons/bs';
 import { MdOutlineEditOff } from "react-icons/md";
 import { ArmadoArrayGuardar } from '../layouts/localStorage/LocalStorage';
 import { formTaskStyles } from './StyleInputTask';
+import { FechaAAAAMMDD, FechaLS_AAAAMMDD } from './ConvertirFecha';
 
 export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit, setOpen, montarComponente, setMontarComponente }) => {
     const [tareaTextArea, setTareaTextArea] = useState("");
 
-    // useEffect(() => {
-    //     // Actualizamos el estado del textArea con la tarea actual
-    //     setTareaTextArea(tareaAEdit.tarea);
-    // }, []);
-
     const [error, setError] = useState(false);
-
-
+    const [errorFech, setErrorFech] = useState (false);
+    let fechaNuevaParaLS= tareaAEdit.fechaLim;
+    let nuevaPrioridad= tareaAEdit.prioridad;
+    let auxTarea = tareaAEdit.tarea;
 
     const handleChangeTarea = (e) => {
-        setTareaTextArea(tareaAEdit.tarea)
-        const auxTarea = e.target.value;
-        setTareaTextArea(auxTarea); 
+        // setTareaTextArea(tareaAEdit.tarea)
+        auxTarea = e.target.value;
+        // setTareaTextArea(auxTarea); 
         if (auxTarea.length < 3 || auxTarea.length > 50) {
             setError(true); 
         } else {
@@ -29,23 +27,34 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
         }
     };
 
+    const handleChangeFecha = (e) => {
+        // const fechaGuard = FechaLS_AAAAMMDD (tareaAEdit.fechaLim);
+        let hoy = new Date ();
+        hoy = FechaAAAAMMDD (hoy);       
+        fechaNuevaParaLS = e.target.value;       
+        const fechaNueva = FechaLS_AAAAMMDD(fechaNuevaParaLS)
+        if (fechaNueva < hoy) {
+            setErrorFech(true)
+        } else { setErrorFech(false)}
+    }
+
+    const handleChangePrioridad = (e) => {
+        nuevaPrioridad = e.target.value;
+        nuevaPrioridad= parseInt(nuevaPrioridad);
+    }
+
     const editando = () => {
         const tareaEditada = {
             id: tareaAEdit.id,
-            tarea: tareaTextArea, 
-            fechaLim: tareaAEdit.fechaLim, 
-            prioridad: tareaAEdit.prioridad, 
+            tarea: auxTarea, 
+            fechaLim: fechaNuevaParaLS, 
+            prioridad: nuevaPrioridad, 
             realizada: tareaAEdit.realizada 
         };
         // setTareaTextArea('');
-<<<<<<< HEAD
-        if (tareaTextArea.length > 2 && tareaTextArea.length < 51) {
-=======
-        if (tareaTextArea.length > 2 && tareaTextArea.length < 50) {
->>>>>>> 914809b6fb72efce2516b7786cadbdb8e44b3f45
-            const tareasActualizadas = tareas.map(tarea => tarea.id === tareaAEdit.id ? tareaEditada : tarea);
+        if (auxTarea.length > 2 && auxTarea.length < 51) {
+            const tareasActualizadas = tareas.map(tarea => tarea.id === tareaAEdit.id ?  tareaEditada : tarea)
             setTareas(tareasActualizadas);
-
             ArmadoArrayGuardar(tareaEditada, "edicion");
             // setTareaTextArea(''); 
             setError(false);
@@ -83,10 +92,29 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
                     id="filled-textarea"
                     defaultValue={tareaAEdit.tarea}
                     onChange={handleChangeTarea}
-                    style={{ width: '100%', height: '80px', paddingBlock: '10px', padding:'10px', marginInline:'25px',  }}
+                    style={{ width: '100%', height: '80px', paddingBlock: '10px', padding:'10px', marginInline:'25px', marginBottom:'13px'  }}
                 ></textarea>
-                <input type= "date" defaultValue={tareaAEdit.fechaLim}>
+                 <p style={{ visibility: errorFech ? "visible" : "hidden", color: 'red', fontWeight: '700', fontSize: '8px' }}>Está eligiendo una fecha del pasado</p>
+
+                <input  style= {{ marginBlock: '3px'}}type= "date" defaultValue={tareaAEdit.fechaLim} onChange={handleChangeFecha}>
                 </input>
+                <div style={{...formTaskStyles.inputPrior, marginBlock:'3px'}}>
+                            <label htmlFor="prioridad" style={formTaskStyles.labelSmall}>Prioridad</label>
+                            <input
+                                id='inpPrioridad'
+                                type="range"
+                                name="prioridad"
+                                defaultValue={tareaAEdit.prioridad} 
+                                min={1}
+                                max={5}
+                                step={1}
+                                onChange={handleChangePrioridad}
+                            />
+                            <div style={formTaskStyles.labelMinMax}>
+                                <span style={formTaskStyles.spanMinMax}>Mínima</span>
+                                <span style={formTaskStyles.spanMinMax}>Máxima</span>
+                            </div>
+                        </div>
 
 
             </Box>

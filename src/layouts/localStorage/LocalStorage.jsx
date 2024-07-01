@@ -11,7 +11,6 @@ export const ArmadoArrayGuardar = (nuevoObj, funcion) => {
     let tareasActual;
     let tareasLS = Recuperar();
     if (funcion === "nuevaTarea") {
-        
         if (tareasLS) {
             tareasLS.push(nuevoObj);
             tareasActual = tareasLS;

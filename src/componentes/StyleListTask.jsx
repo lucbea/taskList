@@ -65,6 +65,7 @@ export const tablaTaskStyles = {
     },
     centrado: {
         position: 'relative',
+        paddingRight: '10px',
     },
     checkBox: {
         color: '#33a733 !important', width: '18px', height: '18px', position: 'absolute', top: '0', left: '13px',
@@ -93,7 +94,6 @@ export const tablaTaskStyles = {
        
         '@media (max-width: 650px)': {
             fontSize: '12px',
-            justifyContent: 'flex-start',
             // paddingLeft: '30px',
             justifyContent: 'flex-end',
 
@@ -148,7 +148,6 @@ export const tablaTaskStyles = {
         width: '57px',
         // backgroundColor: 'green',
         textAlign: 'left',
-<<<<<<< HEAD
         // borderBottom: '2px solid red',
         // display: 'none', // Valor por defecto
         // '@media (maxWidth: 650px)': {
@@ -162,16 +161,6 @@ export const tablaTaskStyles = {
             alignItems: 'start',
             fontSize: '8px',
         }
-=======
-        borderBottom: '2px solid red',
-        display: 'none', // Valor por defecto
-        '@media (maxWidth: 650px)': {
-            display: 'block', // Se oculta en pantallas pequeñas
-            fontSize: '35px',
-            justifyContent: 'center',
-            borderBottom: '2px solid blue',
-        },
->>>>>>> 914809b6fb72efce2516b7786cadbdb8e44b3f45
     },
     contIconosTabla: {
         width: '70px',

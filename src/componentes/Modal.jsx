@@ -5,11 +5,7 @@ import Modal from '@mui/material/Modal';
 
 import { FormularioEditar } from './FormularioEditar';
 import { MensajeBorrar } from './MensajeBorrar';
-<<<<<<< HEAD
 import { FechaAAAAMMDD, FechaLS_AAAAMMDD } from './ConvertirFecha';
-=======
-
->>>>>>> 914809b6fb72efce2516b7786cadbdb8e44b3f45
 const style = {
     position: 'absolute',
     top: '50%',
@@ -24,30 +20,17 @@ const style = {
 };
 
 export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTareaAEdit, tareaABorr, setTareaABorr, montarComponente, setMontarComponente, montarComponenteBorrar, setMontarComponenteBorrar }) => {
-<<<<<<< HEAD
-    
-   console.log(tareaABorr.fechaLim)
-    // useEffect(() => {
+      // useEffect(() => {
         let hoy = new Date();
-        console.log("hoy:", hoy)
-        // let hoyAAAAMMDD = FechaAAAAMMDD(hoy);
-        // console.log(tareaABorr, tareaABorr.fechaLim)
-        // const fechaGuardAD = FechaLS_AAAAMMDD(tareaABorr.fechaLim)
-        // console.log("fechaGuardAD:", fechaGuardAD, "hoy:", hoyAAAAMMDD)
-
     // }, [])
 
 
-=======
->>>>>>> 914809b6fb72efce2516b7786cadbdb8e44b3f45
     const handleClose = () => {
         setMontarComponente(false);
         setOpen(false);
     }
 
-
-    // console.log("VentModal", tareaAEdit, tareaAEdit.tarea, "montarComponente:", montarComponente)
-    return (
+  return (
         <div>
             <Modal
                 keepMounted
@@ -56,21 +39,13 @@ export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTar
                 aria-labelledby="keep-mounted-modal-title"
                 aria-describedby="keep-mounted-modal-description"
             >
-<<<<<<< HEAD
                 <Box sx={{ ...style, bgcolor: '#F2F2F2', margin:'0', padding: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', minWidth: '220px', width: '90%', maxWidth: '300px', height: 'auto', border: '1px solid #6e6b6b' }}>
-=======
-                <Box sx={{ ...style, bgcolor: '#F2F2F2', padding: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', minWidth: '200px', width: '90%', maxWidth: '300px', height: 'auto', border: '1px solid #6e6b6b' }}>
->>>>>>> 914809b6fb72efce2516b7786cadbdb8e44b3f45
                     {montarComponente && (
                         <FormularioEditar tareas={tareas} setTareas={setTareas} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} setOpen={setOpen} montarComponente={montarComponente} setMontarComponente={setMontarComponente} />
                     )}
                     {montarComponenteBorrar && (
                         <MensajeBorrar tareas={tareas} setTareas={setTareas} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} setOpen={setOpen} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} />
-<<<<<<< HEAD
                     )}
-=======
-                )}
->>>>>>> 914809b6fb72efce2516b7786cadbdb8e44b3f45
                 </Box>
             </Modal>
         </div >

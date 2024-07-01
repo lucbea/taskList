@@ -1,15 +1,10 @@
 //Toma fecha de local Storage AAAA-MM-DD, la convierte y la muestra con formato DD-MM-AAAA para mostrar
 export const FechaLS_DDMMAAA = (fechaGuardada) => {
-
     const partes = fechaGuardada.split('-'); // Dividir la fecha en partes por el separador '-'
     if (partes.length === 3) {
-        const fechaConvertida = `${partes[2]}-${partes[1]}-${partes[0]}`; // Reordenar las partes en el nuevo formato
-        console.log(`Fecha convertida: ${fechaConvertida}`);
+        const fechaConvertida = `${partes[2]}-${partes[1]}-${partes[0]}`;
         return fechaConvertida;
-        // Aquí puedes usar la fechaConvertida como necesites
-    } else {
-        console.error('Formato de fecha no válido');
-    }
+    } 
 }
 
 //Convertir la fecha de local Storage AAAA-MM-DD a AAAAMMDD
@@ -17,9 +12,8 @@ export const FechaLS_AAAAMMDD = (fecha) => {
     return fecha.replace(/-/g, '');
 }
 
-//Convertir la fecha gps a formato AAAAMMDD
+//Convertir la fecha de máquina a formato AAAAMMDD
 export const FechaAAAAMMDD = (fechaString) => {
-    console.log(fechaString)
     if (fechaString) {
         const fechaOriginal = new Date(fechaString);
         const año = fechaOriginal.getFullYear();
@@ -28,11 +22,7 @@ export const FechaAAAAMMDD = (fechaString) => {
 
         // Formato AAAAMMDD
         const fechaAAAAMMDD = `${año}${mes}${dia}`;
-        console.log(`fecha ${año}${mes}${dia} `)
-
         return fechaAAAAMMDD;
-    } else {
-        console.log("fecha erronea: ", fechaString)
     }
 
 }
