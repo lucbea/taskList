@@ -3,14 +3,14 @@ import { Theme } from '../utils/Vars'
 
 export const BoxLay = ({ children }) => {
   return (
-
     <Box
       sx={{
         width: '100%',
         height: 'auto',
         borderRadius: '5px',
         paddingInline: '16px',
-        paddingBlock:'10px',
+        paddingTop:'10px',
+        paddingBottom: '5px',
         minWidth: '228px',
         maxWidth: '800px',
         marginInline: 'auto',

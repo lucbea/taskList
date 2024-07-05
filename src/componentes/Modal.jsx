@@ -1,8 +1,11 @@
+import { useEffect, useState } from 'react';
+
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
 import { FormularioEditar } from './FormularioEditar';
-
+import { MensajeBorrar } from './MensajeBorrar';
+import { FechaAAAAMMDD, FechaLS_AAAAMMDD } from './ConvertirFecha';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -16,11 +19,19 @@ const style = {
     p: 4,
 };
 
-export const VentModal = ({id,  tareas, setTareas, open, setOpen, tareaAEdit }) => {
-    const handleClose = () => setOpen(false);
+export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTareaAEdit, tareaABorr, setTareaABorr, montarComponente, setMontarComponente, montarComponenteBorrar, setMontarComponenteBorrar }) => {
+      // useEffect(() => {
+        let hoy = new Date();
+    // }, [])
 
-    return (
-        <div>          
+
+    const handleClose = () => {
+        setMontarComponente(false);
+        setOpen(false);
+    }
+
+  return (
+        <div>
             <Modal
                 keepMounted
                 open={open}
@@ -28,8 +39,13 @@ export const VentModal = ({id,  tareas, setTareas, open, setOpen, tareaAEdit }) 
                 aria-labelledby="keep-mounted-modal-title"
                 aria-describedby="keep-mounted-modal-description"
             >
-                <Box sx={{ ...style, bgcolor: '#F2F2F2', padding:'0px', display:'flex', flexDirection:'column', justifyContent:'space-evenly', minWidth:'276px', width:'90%' }}>
-                 <FormularioEditar tareas={tareas} setTareas={setTareas} tareaAEdit={tareaAEdit} setOpen= {setOpen}/>
+                <Box sx={{ ...style, bgcolor: '#F2F2F2', margin:'0', padding: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', minWidth: '220px', width: '90%', maxWidth: '300px', height: 'auto', border: '1px solid #6e6b6b' }}>
+                    {montarComponente && (
+                        <FormularioEditar tareas={tareas} setTareas={setTareas} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} setOpen={setOpen} montarComponente={montarComponente} setMontarComponente={setMontarComponente} />
+                    )}
+                    {montarComponenteBorrar && (
+                        <MensajeBorrar tareas={tareas} setTareas={setTareas} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} setOpen={setOpen} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} />
+                    )}
                 </Box>
             </Modal>
         </div >

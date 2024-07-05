@@ -19,8 +19,8 @@ body {
 }
 
 #root {
-  width: 90%;
+  min-width: 250px;
 
-  margin-inline: auto;
+  margin-inline: 15px;
   /* min-width:360px; */
 }

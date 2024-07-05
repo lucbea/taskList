@@ -5,6 +5,7 @@ import { InicializarLS, Recuperar } from "./layouts/localStorage/LocalStorage";
 
 import { IngresoTarea } from './layouts/ingresoTarea/IngresoTarea'
 import { ListaTareas } from './layouts/listaTareas/ListaTareas'
+import { OrdenFechaPrioridad } from './componentes/OrdenFechaPrioridad';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -15,12 +16,12 @@ function App() {
   const [tareas, setTareas] = useState([]);
   const [filtro, setFiltro ] = useState ("TODAS");
   
- 
 
   useEffect(() => {
     const tareasLS= Recuperar();
     if (tareasLS !== null && tareasLS.length > 0) {
-      setTareas(tareasLS);
+      let tareasLSOrdenadas = OrdenFechaPrioridad (tareasLS)
+      setTareas(tareasLSOrdenadas);
     } else {
       setTareas([])
     }

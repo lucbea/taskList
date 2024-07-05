@@ -10,6 +10,7 @@ import { BsCheck2Square } from "react-icons/bs";
 import { v4 as uuidv4 } from 'uuid';
 
 import { formTaskStyles, inputNormal, inputError } from './StyleInputTask'
+import { OrdenFechaPrioridad } from './OrdenFechaPrioridad';
 
 export const InputTask = ({ tareas, setTareas, filtro, setFiltro }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -32,11 +33,12 @@ export const InputTask = ({ tareas, setTareas, filtro, setFiltro }) => {
         obj.fechaRealiz = "";
         setPrioridad(1); 
 
-        let tareasActualiz = [...tareas, obj]
+        // let tareasActualiz = [...tareas, obj]
         
-        setTareas(tareasActualiz); 
+        // setTareas(tareasActualiz); 
         let nuevasTareas = ArmadoArrayGuardar(obj, "nuevaTarea");
-        setTareas(nuevasTareas)
+        let nuevasTareasOrd = OrdenFechaPrioridad (nuevasTareas);
+        setTareas(nuevasTareasOrd)
         reset(); 
         setFiltro("TODAS");
         Guardar("filtro", "TODAS")
@@ -46,7 +48,7 @@ export const InputTask = ({ tareas, setTareas, filtro, setFiltro }) => {
         <>
             <form onSubmit={handleSubmit(onSubmit)} style={formTaskStyles.formCont}>
                 <Box sx={formTaskStyles.inputCont}>
-                    <div style={formTaskStyles.tareaInput}>
+                    <Box sx={formTaskStyles.tareaInput}>
                         <label htmlFor="ingresoTarea" style={formTaskStyles.labelSmall}>Ingreso de tarea</label>
                         <input
                             id="ingresoTarea"
@@ -63,8 +65,8 @@ export const InputTask = ({ tareas, setTareas, filtro, setFiltro }) => {
                         {errors.tarea?.type === 'minLength' && <p style={formTaskStyles.labelControl}>Longitud: más de 2 caracteres</p>}
                         {errors.tarea?.type === 'maxLength' && <p style={formTaskStyles.labelControl}>Longitud: 50 caracteres, máximo</p>}
                         <p style={{ visibility: 'hidden', height: '16px' }}>Guardar espacio</p>
-                    </div>
-                    <div style={{...formTaskStyles.inputFechaPrior, display:'none'}}>
+                    </Box>
+                    <Box sx={{...formTaskStyles.inputFechaPrior}}>
                         <div style={formTaskStyles.inputFecha}>
                             <label htmlFor="fechaLim" style={formTaskStyles.labelSmall}>Fecha límite</label>
                             <input
@@ -98,7 +100,7 @@ export const InputTask = ({ tareas, setTareas, filtro, setFiltro }) => {
                                 <span style={formTaskStyles.spanMinMax}>Máxima</span>
                             </div>
                         </div>
-                    </div>
+                    </Box>
                 </Box>
                 <IconButton type="submit" edge="end" aria-label="grabar" sx={{...formTaskStyles.submitBtn, color: '#329c32',}} >
                     <BsCheck2Square sx={formTaskStyles.iconoBtn} />
