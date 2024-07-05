@@ -14,22 +14,21 @@ import { Guardar, Recuperar, RecuperarFiltro } from '../localStorage/LocalStorag
 import { VentModal } from '../../componentes/Modal';
 import { Filtros } from '../filtros/Filtros';
 import { GetPrioridadText } from '../../componentes/ConversPrioridad';
-import { FechaAAAAMMDD, FechaLS_AAAAMMDD, FechaLS_DDMMAAA } from '../../componentes/ConvertirFecha';
+import { FechaLS_DDMMAAA } from '../../componentes/ConvertirFecha';
 import { FechaPasada } from '../../componentes/FechaPasada';
 import { OrdenFechaPrioridad } from '../../componentes/OrdenFechaPrioridad';
+
 
 export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
     let tareasLS;
     let tareaAEditar;
     let tareaABorrar;
     let nuevasTareasOrd;
-
     const [open, setOpen] = useState(false);
     const [tareaAEdit, setTareaAEdit] = useState({});
     const [tareaABorr, setTareaABorr] = useState({})
     const [montarComponente, setMontarComponente] = useState(false);
     const [montarComponenteBorrar, setMontarComponenteBorrar] = useState(false);
-    const [tiempoVencido, setTiempoVencido] = useState(false);
 
     const handleChangeCheck = (id) => {
         let tareasLS = Recuperar();
@@ -46,22 +45,18 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
         Guardar("tareas", nuevasTareas);
         setTareas(nuevasTareasOrd);
 
-        //Voy a filtrar para mostrar según el select
         tareasLS = Recuperar();
         let filtroLS = RecuperarFiltro();
         let tareasFiltradas = [];
         switch (filtroLS) {
             case 'TODAS':
                 tareasFiltradas = tareasLS;
-                // setTareas(tareasFiltradas);
                 break;
             case 'COMPLETAS':
                 tareasFiltradas = tareasLS.filter(tarea => tarea.realizada);
-                // setTareas(tareasFiltradas);
                 break;
             case 'INCOMPLETAS':
                 tareasFiltradas = tareasLS.filter(tarea => !tarea.realizada);
-                // setTareas(tareasFiltradas);
                 break;
             default:
                 tareasFiltradas = tareas;
@@ -73,10 +68,9 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
     const editarTarea = (id) => {
         tareasLS = Recuperar();
         tareaAEditar = tareasLS.find(tarea => tarea.id === id);
-        
         setTareaAEdit(tareaAEditar);
         setOpen(true);
-        setMontarComponente(true); // Cambia montarComponente a true al editar tarea
+        setMontarComponente(true); 
     };
 
     const borrarTarea = (id) => {
@@ -89,7 +83,7 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
 
     const elegirMje = (alertaTiempo) => {
         if (alertaTiempo === 1) {
-            return ("¡Fecha excedida!")
+            return ("¡Fecha pasada!")
         }
         if (alertaTiempo === 2) {
             return ("Fecha límite, HOY")
@@ -128,7 +122,6 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                                 const deleteId = `delete-${id}`;
                                 const alertaTiempo = FechaPasada(loc)
                                 const mje = elegirMje(alertaTiempo)
-
                                 return (
                                     <TableRow key={id} sx={tablaTaskStyles.tableRow}>
                                         <TableCell component="th" scope="row" sx={{ ...tablaTaskStyles.tableCell, border: '0px' }}>
@@ -183,7 +176,6 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                     <p style={{ marginTop: '10px', textAlign: 'center', color: 'green', fontSize: '12px' }}>Modifique el filtro o ingrese una nueva tarea.</p>
                 </div>
             )}
-
             <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} montarComponente={montarComponente} setMontarComponente={setMontarComponente} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} />
         </>
     );

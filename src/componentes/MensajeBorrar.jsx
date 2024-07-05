@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import { BsCheck2Square, BsTrash3 } from 'react-icons/bs';
 
 import {  TbTrashOff, TbTrash } from "react-icons/tb";
-import { MdOutlineEditOff } from "react-icons/md";
 import { PiSmileyWinkThin, PiSmileyXEyesLight } from "react-icons/pi";
 import { Recuperar, Guardar } from '../layouts/localStorage/LocalStorage';
 import { formTaskStyles } from './StyleInputTask';
 import { stylesModal } from './StylesModal';
 import { GetPrioridadText } from './ConversPrioridad';
-import { FechaAAAAMMDD, FechaLS_AAAAMMDD, FechaLS_DDMMAAA } from './ConvertirFecha';
+import { FechaLS_DDMMAAA } from './ConvertirFecha';
 import { FechaPasada } from './FechaPasada';
 
-export const MensajeBorrar = ({ tareas, setTareas, tareaABorr, setTareaAborr, setOpen, montarComponenteBorrar, setMontarComponenteBorrar, tiempoVencido, setTiempoVencido }) => {
+export const MensajeBorrar = ({setTareas, tareaABorr, setOpen,  setMontarComponenteBorrar}) => {
     let tareasLS = Recuperar();
-    
     let alertaTiempo = FechaPasada (tareaABorr)
    
     const borrando = () => {

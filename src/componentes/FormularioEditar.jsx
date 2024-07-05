@@ -1,3 +1,4 @@
+
 import  { useState } from 'react';
 import { Box } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
@@ -11,42 +12,48 @@ import { OrdenFechaPrioridad } from './OrdenFechaPrioridad';
 export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit, setOpen, setMontarComponente }) => {
     const [error, setError] = useState(false);
     const [errorFech, setErrorFech] = useState (false);
-    const [fechaNuevaParaLS, setFechaNuevaParaLS] = useState (tareaAEdit.fechaLim)
+    const [fechaNuevaParaLS, setFechaNuevaParaLS] = useState (tareaAEdit.fechaLim);
+    const [tareaNuevaParaLS, setTareaNuevaParaLS] = useState (tareaAEdit.tarea)
+    const [nuevaPrioridadParaLS, setNuevaPrioridadParaLS] = useState(tareaAEdit.prioridad)
     let nuevaPrioridad= tareaAEdit.prioridad;
     let auxTarea = tareaAEdit.tarea;
+
+ 
     const handleChangeTarea = (e) => {
-        // setTareaTextArea(tareaAEdit.tarea)
         auxTarea = e.target.value;
         if (auxTarea.length < 3 || auxTarea.length > 50) {
             setError(true); 
         } else {
             setError(false); 
+            setTareaNuevaParaLS(auxTarea);
         }
     };
 
     const handleChangeFecha = (e) => {
         let hoy = new Date ();
-        hoy = FechaAAAAMMDD (hoy);       
-        setFechaNuevaParaLS( e.target.value ); 
-        const fechaNueva = FechaLS_AAAAMMDD(fechaNuevaParaLS);
-        console.log(fechaNueva, fechaNuevaParaLS, hoy, e.target.value);
+        hoy = parseInt(FechaAAAAMMDD (hoy));      
+        let fechaNueva = e.target.value
+        fechaNueva = parseInt(FechaLS_AAAAMMDD(fechaNueva));
         if (fechaNueva < hoy) {
             setErrorFech(true);
-        } else { setErrorFech(false)} 
-
+        } else { 
+            setErrorFech(false)
+        } 
+        setFechaNuevaParaLS( e.target.value ); 
     }
 
     const handleChangePrioridad = (e) => {
         nuevaPrioridad = e.target.value;
         nuevaPrioridad= parseInt(nuevaPrioridad);
+        setNuevaPrioridadParaLS(nuevaPrioridad);
     }
 
     const editando = () => {
         const tareaEditada = {
             id: tareaAEdit.id,
-            tarea: auxTarea, 
+            tarea: tareaNuevaParaLS, 
             fechaLim: fechaNuevaParaLS, 
-            prioridad: nuevaPrioridad, 
+            prioridad: nuevaPrioridadParaLS, 
             realizada: tareaAEdit.realizada 
         };
         if (auxTarea.length > 2 && auxTarea.length < 51) {
@@ -83,16 +90,14 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
                 autoComplete="off"
             >
                 <p style={{ visibility: error ? "visible" : "hidden", color: 'red', fontWeight: '700', fontSize: '8px' }}>La tarea debe tener entre 3 y 50 caracteres</p>
-
                 <textarea
                     id="filled-textarea"
                     defaultValue={tareaAEdit.tarea}
                     onChange={handleChangeTarea}
                     style={{ width: '100%', height: '80px', paddingBlock: '10px', padding:'10px', marginInline:'25px', marginBottom:'13px'  }}
                 ></textarea>
-                 <p style={{ visibility: errorFech ? "visible" : "hidden", color: 'red', fontWeight: '700', fontSize: '8px' }}>Está eligiendo una fecha del pasado</p>
+                <p style={{ visibility: errorFech ? "visible" : "hidden", color: 'red', fontWeight: '700', fontSize: '8px' }}>Está eligiendo una fecha del pasado</p>
                 <input  style= {{ marginBlock: '3px'}} type= "date" defaultValue={tareaAEdit.fechaLim} onChange={handleChangeFecha}>
-
                 </input>
                 <div style={{...formTaskStyles.inputPrior, marginBlock:'3px'}}>
                             <label htmlFor="prioridad" style={formTaskStyles.labelSmall}>Prioridad</label>
@@ -111,8 +116,6 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
                                 <span style={formTaskStyles.spanMinMax}>Máxima</span>
                             </div>
                         </div>
-
-
             </Box>
             <Box sx={{ position:'relative', justifyContent: 'flex-end', marginTop: '15px', height:'50px' }}>
                 <IconButton onClick={cancelando} type="submit" edge="end" aria-label="cancelar" sx={{ ...formTaskStyles.submitBtn, ...formTaskStyles.submitBtnRed , position:'absolute', bottom:'2px', right:'50px'}}>

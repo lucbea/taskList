@@ -8,6 +8,7 @@ export const formTaskStyles = {
         marginTop:'6px',
         position: 'relative'
     },
+    
     inputCont: {
         width: '100%',
         maxWidth: '850px',
@@ -18,8 +19,8 @@ export const formTaskStyles = {
             gap:'10px',
           },
     },
+
     tareaInput: {
-        // marginBottom: '4px',
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -29,11 +30,13 @@ export const formTaskStyles = {
             paddingRight:'5px',
           },
     },
+
     labelSmall: {
         fontSize: '10px',
         marginBottom: '0',
         paddingLeft: '3px',
     },
+
     inputStyle:{
         outline:'none',
         paddingInline: '8px',
@@ -43,6 +46,7 @@ export const formTaskStyles = {
         height: '25px',
         borderRadius:'3px',
     },
+
     labelControl: {
         fontSize: '10px',
         marginBottom: '0',
@@ -52,10 +56,12 @@ export const formTaskStyles = {
         top:'40px',
         fontWeight:'600',
     },
+
     inputTarea: {
         width: '100%',
         marginRight: '10px',
     },
+
     inputFechaPrior: {
         display: 'flex',
         justifyContent: 'spaceBetween',
@@ -65,26 +71,31 @@ export const formTaskStyles = {
             paddingRight:'45px',
           },
     },
+
     inputFecha: {
         width: '100px',
         display: 'flex',
         flexDirection: 'column',
         fontSize: '10px',
     },
+
     inputPrior: {
         display: 'flex',
         flexDirection: 'column',
         width: '-webkit-fill-available',
         minWidth: '110px',
     },
+
     labelMinMax: {
         display: 'flex',
         justifyContent: 'space-between',
     },
+
     spanMinMax: {
         paddingInline: '5px',
         fontSize: '7px',
     },
+
     submitBtn: {
         position: 'absolute',
         top:'2px',
@@ -107,6 +118,7 @@ export const formTaskStyles = {
         fontWeight:'400',
         '&:hover': { backgroundColor: '#bf828275', },
     },
+
     submitBtnNormal: {
         color: 'black',
         '&:hover': { backgroundColor: '#cbcaca' },
