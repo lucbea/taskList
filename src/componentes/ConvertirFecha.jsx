@@ -19,8 +19,6 @@ export const FechaAAAAMMDD = (fechaString) => {
         const año = fechaOriginal.getFullYear();
         let mes = (fechaOriginal.getMonth() + 1).toString().padStart(2, '0'); // Se agrega +1 porque los meses en JavaScript son de 0 a 11
         let dia = fechaOriginal.getDate().toString().padStart(2, '0');
-
-        // Formato AAAAMMDD
         const fechaAAAAMMDD = `${año}${mes}${dia}`;
         return fechaAAAAMMDD;
     }

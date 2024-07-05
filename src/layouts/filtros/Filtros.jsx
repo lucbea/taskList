@@ -1,12 +1,9 @@
 import { CheckFiltroSelect } from "../../componentes/CheckFiltro";
-import { Guardar, Recuperar, RecuperarFiltro } from '../localStorage/LocalStorage';
+import { Guardar} from '../localStorage/LocalStorage';
 
 export const Filtros = ({ tareas, setTareas, filtro, setFiltro }) => {
-    let tareasLS = Recuperar();
     let filtroSeleccionado = "TODAS";
-    const filtroLS = RecuperarFiltro();
     Guardar("filtro", filtro);
-        
     
     const handleFiltroChange = (e) => {
         filtroSeleccionado = e.target.value;
@@ -24,6 +21,5 @@ export const Filtros = ({ tareas, setTareas, filtro, setFiltro }) => {
                 <option value="INCOMPLETAS">INCOMPLETAS</option>
             </select>
         </div>
-
     );
 };

@@ -1,4 +1,3 @@
-
 import { useState} from 'react';
 import { useForm } from "react-hook-form";
 import { Box } from '@mui/material';
@@ -12,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { formTaskStyles, inputNormal, inputError } from './StyleInputTask'
 import { OrdenFechaPrioridad } from './OrdenFechaPrioridad';
 
-export const InputTask = ({ tareas, setTareas, filtro, setFiltro }) => {
+export const InputTask = ({ setTareas,  setFiltro }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const [prioridad, setPrioridad] = useState(1);
@@ -26,16 +25,12 @@ export const InputTask = ({ tareas, setTareas, filtro, setFiltro }) => {
     if (day < 10) { day = '0' + day; }
     const formattedDate = `${year}-${month}-${day}`;
 
-    const onSubmit = (obj, formState) => {
+    const onSubmit = (obj) => {
         const id = uuidv4();
         obj.id = id;
         obj.realizada = false;
         obj.fechaRealiz = "";
         setPrioridad(1); 
-
-        // let tareasActualiz = [...tareas, obj]
-        
-        // setTareas(tareasActualiz); 
         let nuevasTareas = ArmadoArrayGuardar(obj, "nuevaTarea");
         let nuevasTareasOrd = OrdenFechaPrioridad (nuevasTareas);
         setTareas(nuevasTareasOrd)

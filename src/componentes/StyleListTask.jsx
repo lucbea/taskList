@@ -4,7 +4,6 @@ export const tablaTaskStyles = {
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center',
-        //  marginTop: '5px',
         '@media (maxWidth: 650px)': { 
             display: 'flex', 
             flexDirection: 'column' 
@@ -70,6 +69,7 @@ export const tablaTaskStyles = {
     tableCell: {
         paddingInline: '3px',
         paddingBlock: '3px', 
+        position: 'relative',
     },
     centrado: {
         position: 'relative',
