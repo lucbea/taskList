@@ -1,25 +1,30 @@
 import { Recuperar, RecuperarFiltro } from "../layouts/localStorage/LocalStorage";
+import { OrdenFechaPrioridad } from "./OrdenFechaPrioridad";
 
 
 export const CheckFiltroSelect = ({tareas, setTareas}) => {
   const tareasLS = Recuperar();
   const filtroLS = RecuperarFiltro()
   let tareasFiltradas = [];
+  let tareasFiltradasOrden = [];
   switch (filtroLS) {
     case 'TODAS':
       tareasFiltradas = tareasLS;
-      setTareas(tareasFiltradas);
+      tareasFiltradasOrden = OrdenFechaPrioridad (tareasFiltradas);
+      setTareas(tareasFiltradasOrden);
       break;
     case 'COMPLETAS':
       tareasFiltradas = tareasLS.filter(tarea => tarea.realizada);
-      setTareas(tareasFiltradas);
+      tareasFiltradasOrden = OrdenFechaPrioridad (tareasFiltradas);
+      setTareas(tareasFiltradasOrden);
       break;
     case 'INCOMPLETAS':
       tareasFiltradas = tareasLS.filter(tarea => !tarea.realizada);
-      setTareas(tareasFiltradas);
+      tareasFiltradasOrden = OrdenFechaPrioridad (tareasFiltradas);
+      setTareas(tareasFiltradasOrden);
       break;
     default:
-      tareasFiltradas = tareas;
+      tareasFiltradas = OrdenFechaPrioridad (tareas);
   }
   return (
     <></>

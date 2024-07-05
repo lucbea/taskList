@@ -16,12 +16,14 @@ import { Filtros } from '../filtros/Filtros';
 import { GetPrioridadText } from '../../componentes/ConversPrioridad';
 import { FechaAAAAMMDD, FechaLS_AAAAMMDD, FechaLS_DDMMAAA } from '../../componentes/ConvertirFecha';
 import { FechaPasada } from '../../componentes/FechaPasada';
-
+import { OrdenFechaPrioridad } from '../../componentes/OrdenFechaPrioridad';
 
 export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
     let tareasLS;
     let tareaAEditar;
-    let tareaABorrar
+    let tareaABorrar;
+    let nuevasTareasOrd;
+
     const [open, setOpen] = useState(false);
     const [tareaAEdit, setTareaAEdit] = useState({});
     const [tareaABorr, setTareaABorr] = useState({})
@@ -40,8 +42,9 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
             }
             return tarea;
         });
+        nuevasTareasOrd = OrdenFechaPrioridad (nuevasTareas);
         Guardar("tareas", nuevasTareas);
-        setTareas(nuevasTareas);
+        setTareas(nuevasTareasOrd);
 
         //Voy a filtrar para mostrar según el select
         tareasLS = Recuperar();
@@ -50,24 +53,27 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
         switch (filtroLS) {
             case 'TODAS':
                 tareasFiltradas = tareasLS;
-                setTareas(tareasFiltradas);
+                // setTareas(tareasFiltradas);
                 break;
             case 'COMPLETAS':
                 tareasFiltradas = tareasLS.filter(tarea => tarea.realizada);
-                setTareas(tareasFiltradas);
+                // setTareas(tareasFiltradas);
                 break;
             case 'INCOMPLETAS':
                 tareasFiltradas = tareasLS.filter(tarea => !tarea.realizada);
-                setTareas(tareasFiltradas);
+                // setTareas(tareasFiltradas);
                 break;
             default:
                 tareasFiltradas = tareas;
         }
+        let tareasFiltradasOrden = OrdenFechaPrioridad (tareasFiltradas);
+        setTareas(tareasFiltradasOrden);
     };
 
     const editarTarea = (id) => {
         tareasLS = Recuperar();
         tareaAEditar = tareasLS.find(tarea => tarea.id === id);
+        
         setTareaAEdit(tareaAEditar);
         setOpen(true);
         setMontarComponente(true); // Cambia montarComponente a true al editar tarea
@@ -83,21 +89,23 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
 
     const elegirMje = (alertaTiempo) => {
         if (alertaTiempo === 1) {
-            return ("Fecha excedida")
+            return ("¡Fecha excedida!")
         }
         if (alertaTiempo === 2) {
-            return ("Fecha límite cercana")
+            return ("Fecha límite, HOY")
         }
         if (alertaTiempo === 3) {
             return ("Aún hay tiempo")
         }
-
+        if (alertaTiempo === 0) {
+            return ("")
+        }
     }
 
     return (
         <>
             <div style={tablaTaskStyles.contTitFilt}>
-                <h5 style={tablaTaskStyles.titTabla}>LISTA  DE  TAREAS</h5>
+                <h5>LISTA  DE  TAREAS</h5>
                 <Filtros tareas={tareas} setTareas={setTareas} filtro={filtro} setFiltro={setFiltro} />
             </div>
             {tareas.length > 0 ? (
@@ -107,8 +115,8 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                             <TableRow sx={tablaTaskStyles.tableRowHead}>
                                 <TableCell sx={tablaTaskStyles.tableCellTarea}>Tarea</TableCell>
                                 <TableCell align="center" sx={tablaTaskStyles.tableCellPriorHead}>
-                                    <div style={{ fontSize: '14px', width: '85px' }}>Fecha Límite</div>
-                                    <div style={{ fontSize: '14px', width: '95px', paddingLeft: '10px' }}>Prioridad</div>
+                                    <div style={{ fontSize: '14px', width: '85px', display: 'flex', alignItems:'center' }}>Fecha Límite</div>
+                                    <div style={{ fontSize: '14px', width: '95px', paddingLeft: '10px', display: 'flex', alignItems:'center' }}>Prioridad</div>
                                 </TableCell>
                             </TableRow>
                         </TableHead>
@@ -121,7 +129,6 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                                 const alertaTiempo = FechaPasada(loc)
                                 const mje = elegirMje(alertaTiempo)
 
-
                                 return (
                                     <TableRow key={id} sx={tablaTaskStyles.tableRow}>
                                         <TableCell component="th" scope="row" sx={{ ...tablaTaskStyles.tableCell, border: '0px' }}>
@@ -133,16 +140,16 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                                                     disableRipple
                                                     inputProps={{ 'aria-labelledby': labelId }}
                                                     onClick={() => handleChangeCheck(id)}
-                                                    sx={{ ...tablaTaskStyles.checkBox, padding: '0px', marginTop: '3px' }}
+                                                    sx={tablaTaskStyles.checkBox}
                                                 />
-                                                <p id='tareaTabla' style={{ ...tablaTaskStyles.tareaTabla, color: realizada ? '#b9c9bb' : 'black', paddingLeft: '30px' }}>{tarea}</p>
+                                                <p id='tareaTabla' style={{ ...tablaTaskStyles.tareaTabla, color: realizada ? '#b9c9bb' : 'black' }}>{tarea}</p>
                                             </div>
                                         </TableCell>
                                         <TableCell align="center" sx={tablaTaskStyles.tableCellPriorRow}>
                                             <Box sx={ tablaTaskStyles.contCellPriorRow }>
-                                                <Box sx={{ ...tablaTaskStyles.palabraPrior, color: realizada ? '#b9c9bb' : 'black', 
-                                                    marginTop: '2px', fontSize: '12px', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '85px', flexDirection: 'column', color: alertaTiempo === 3 ? '#049404' : (alertaTiempo === 2 ? '#f67c2f' : (alertaTiempo === 1 ? '#ff0000' : '#b9c9bb')) }}>
-                                                    {FechaLS_DDMMAAA(fechaLim)} <span style={{ fontSize: '8px', fontWeight: 700, textAlign: 'center' }}>{mje}</span>
+                                                <Box sx={{ ...tablaTaskStyles.contFecha, 
+                                                color: alertaTiempo === 3 ? '#049404' : (alertaTiempo === 2 ? '#f67c2f' : (alertaTiempo === 1 ? '#ff0000' : '#b9c9bb')) }}>
+                                                    {FechaLS_DDMMAAA(fechaLim)} <span style={{ fontSize: '8px', fontWeight: 700, textAlign: 'center', display: mje === "" ? "none": "flex" }}>{mje}</span>
                                                 </Box>
                                                 <Box sx={tablaTaskStyles.contPrior}>
                                                     <Box sx={{ ...tablaTaskStyles.contPalabraPrior }}>
@@ -178,7 +185,6 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
             )}
 
             <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} montarComponente={montarComponente} setMontarComponente={setMontarComponente} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} />
-
         </>
     );
 };

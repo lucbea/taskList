@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState } from 'react';
 import { Box } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import { BsCheck2Square } from 'react-icons/bs';
@@ -6,20 +6,17 @@ import { MdOutlineEditOff } from "react-icons/md";
 import { ArmadoArrayGuardar } from '../layouts/localStorage/LocalStorage';
 import { formTaskStyles } from './StyleInputTask';
 import { FechaAAAAMMDD, FechaLS_AAAAMMDD } from './ConvertirFecha';
+import { OrdenFechaPrioridad } from './OrdenFechaPrioridad';
 
-export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit, setOpen, montarComponente, setMontarComponente }) => {
-    const [tareaTextArea, setTareaTextArea] = useState("");
-
+export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit, setOpen, setMontarComponente }) => {
     const [error, setError] = useState(false);
     const [errorFech, setErrorFech] = useState (false);
-    let fechaNuevaParaLS= tareaAEdit.fechaLim;
+    const [fechaNuevaParaLS, setFechaNuevaParaLS] = useState (tareaAEdit.fechaLim)
     let nuevaPrioridad= tareaAEdit.prioridad;
     let auxTarea = tareaAEdit.tarea;
-
     const handleChangeTarea = (e) => {
         // setTareaTextArea(tareaAEdit.tarea)
         auxTarea = e.target.value;
-        // setTareaTextArea(auxTarea); 
         if (auxTarea.length < 3 || auxTarea.length > 50) {
             setError(true); 
         } else {
@@ -28,14 +25,15 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
     };
 
     const handleChangeFecha = (e) => {
-        // const fechaGuard = FechaLS_AAAAMMDD (tareaAEdit.fechaLim);
         let hoy = new Date ();
         hoy = FechaAAAAMMDD (hoy);       
-        fechaNuevaParaLS = e.target.value;       
-        const fechaNueva = FechaLS_AAAAMMDD(fechaNuevaParaLS)
+        setFechaNuevaParaLS( e.target.value ); 
+        const fechaNueva = FechaLS_AAAAMMDD(fechaNuevaParaLS);
+        console.log(fechaNueva, fechaNuevaParaLS, hoy, e.target.value);
         if (fechaNueva < hoy) {
-            setErrorFech(true)
-        } else { setErrorFech(false)}
+            setErrorFech(true);
+        } else { setErrorFech(false)} 
+
     }
 
     const handleChangePrioridad = (e) => {
@@ -51,12 +49,11 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
             prioridad: nuevaPrioridad, 
             realizada: tareaAEdit.realizada 
         };
-        // setTareaTextArea('');
         if (auxTarea.length > 2 && auxTarea.length < 51) {
             const tareasActualizadas = tareas.map(tarea => tarea.id === tareaAEdit.id ?  tareaEditada : tarea)
-            setTareas(tareasActualizadas);
+             let nuevasTareasOrd = OrdenFechaPrioridad (tareasActualizadas);
+            setTareas(nuevasTareasOrd);
             ArmadoArrayGuardar(tareaEditada, "edicion");
-            // setTareaTextArea(''); 
             setError(false);
             setTareaAEdit({});
             setMontarComponente(false);
@@ -65,7 +62,6 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
 };
 
     const cancelando = () => {
-        // setTareaTextArea(''); 
         setError(false);
         setMontarComponente(false);
         setOpen(false);
@@ -95,8 +91,8 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
                     style={{ width: '100%', height: '80px', paddingBlock: '10px', padding:'10px', marginInline:'25px', marginBottom:'13px'  }}
                 ></textarea>
                  <p style={{ visibility: errorFech ? "visible" : "hidden", color: 'red', fontWeight: '700', fontSize: '8px' }}>Está eligiendo una fecha del pasado</p>
+                <input  style= {{ marginBlock: '3px'}} type= "date" defaultValue={tareaAEdit.fechaLim} onChange={handleChangeFecha}>
 
-                <input  style= {{ marginBlock: '3px'}}type= "date" defaultValue={tareaAEdit.fechaLim} onChange={handleChangeFecha}>
                 </input>
                 <div style={{...formTaskStyles.inputPrior, marginBlock:'3px'}}>
                             <label htmlFor="prioridad" style={formTaskStyles.labelSmall}>Prioridad</label>

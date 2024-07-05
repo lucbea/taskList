@@ -1,11 +1,14 @@
 export const tablaTaskStyles = {
 
     contTitFilt: {
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px',
-        '@media (maxWidth: 650px)': { display: 'flex', flexDirection: 'column' },
-    },
-    titTabla: {
-        // borderBottom: '1px solid #E1DEDE'
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center',
+        //  marginTop: '5px',
+        '@media (maxWidth: 650px)': { 
+            display: 'flex', 
+            flexDirection: 'column' 
+        },
     },
     tableContainer: {
         maxHeight: '290px', 
@@ -20,11 +23,17 @@ export const tablaTaskStyles = {
         top: 0,
         zIndex: 1,
         backgroundColor: '#e2e7e3',
-        '@media (max-width: 650px)': { position: 'relative', height: '0px', display: 'none' }
+        '@media (max-width: 650px)': { 
+            position: 'relative', 
+            height: '0px', 
+            display: 'none' 
+        }
     },
     tableRowHead: {
         height: '35px',
-        '@media (max-width: 650px)': { height: '0px' }
+        '@media (max-width: 650px)': { 
+            height: '0px' 
+        }
     },
     tableCellTarea: {
         padding: '3px',
@@ -33,7 +42,8 @@ export const tablaTaskStyles = {
         width: '50%',
         fontSize: '14px',
         '@media (max-width: 650px)': {
-            display: 'none', height: '0px'
+            display: 'none', 
+            height: '0px'
         }
     },
     tableCellPriorHead: {
@@ -43,32 +53,36 @@ export const tablaTaskStyles = {
         marginRight: '90px',
         paddingLeft: '30px',
         gap: '20px',
-        '@media (max-width: 650px)': { display: 'none', height: '0px' }
+        '@media (max-width: 650px)': {
+             display: 'none', 
+             height: '0px' }
     },
 
     tableRow: {
         minWidth: '200px',
-        height: '50px',
         borderTop: '1px solid #F2F2F2',
         '@media (max-width: 650px)': {
             display: 'flex',
             flexDirection: 'column',
             height: 'auto',
-            marginBottom:'5px',
         }
     },
     tableCell: {
         paddingInline: '3px',
         paddingBlock: '3px', 
-        position: 'relative',
-        //    width: '100%',
     },
     centrado: {
         position: 'relative',
         paddingRight: '10px',
     },
     checkBox: {
-        color: '#33a733 !important', width: '18px', height: '18px', position: 'absolute', top: '0', left: '13px',
+        color: '#33a733 !important', 
+        padding: '0px',
+        width: '18px', 
+        height: '18px', 
+        position: 'absolute', 
+        top: '0', 
+        left: '13px',
         '&:hover': {
             backgroundColor: '#33a733',
             borderRadius: '6px',
@@ -78,86 +92,75 @@ export const tablaTaskStyles = {
         display: 'flex',
          maxWidth: '100%',
          flexWrap: 'wrap',
+         paddingLeft: '30px',
         '@media (maxWidth: 650px)': { 
-            fontSize: '58px' }
+            fontSize: '128px' }
     },
     tableCellPriorRow: {
+        paddingInline:'0px',
+        paddingBlock:'3px',
         minWidth: '100px',
-        height: '50px',
         border: '0px',
-        paddingTop: '3px',
-        paddingBottom: '4px',
-        paddingRight: '3px',
-       
         display: 'flex',
         justifyContent: 'space-between',
-       
         '@media (max-width: 650px)': {
             fontSize: '12px',
-            // paddingLeft: '30px',
             justifyContent: 'flex-end',
-
+            marginBottom: '4px',
+            paddingTop: '3px',
         },
     },
     contCellPriorRow: {
         minWidth: '210px',
-        height: '50px',
         border: '0px',
-        paddingTop: '3px',
-        paddingBottom: '4px',
-        paddingRight: '3px',
         paddingLeft: '20px',
         display: 'flex',
-        
         justifyContent: 'space-between',
-        // justifyContent: 'flex-end',
         '@media (max-width: 650px)': {
             flexDirection: 'column',
-            // width:'100px',
-            paddingBottom: '4px',
-            // paddingLeft: '30px',
-            // fontSize: '12px',
             justifyContent: 'flex-start',
             minWidth: '80px',
-
         },
+    },
+    contFecha: {
+        display: 'flex',
+        flexDirection: 'column',
+        marginTop:'2px',
+        fontSize:'12px',
+        justifyContent: 'center',
+        alignItems:'flex-end',
+        marginRight: '3px',
+        width: '85px',
+       
+        '@media screen and (max-width: 650px)': {
+            alignItems:'flex-start',
+            fontSize: '8px',
+        }
+
     },
     contPrior: {
         display: 'flex',
-        //   marginLeft: '30px',
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: '10px',
         '@media (max-width: 650px)': {
            width:'100px',
-
         }
     },
     contPalabraPrior: {
         display: 'none',
         '@media (max-width: 650px)': {
-            display: 'block', // Se oculta en pantallas pequeñas
+            display: 'block', 
             fontSize: '10px',
             justifyContent: 'center',
             width:'50px',
-            // borderBottom: '2px solid blue',
         },
     },
     palabraPrior: {
         marginRight: '3px',
         width: '57px',
-        // backgroundColor: 'green',
         textAlign: 'left',
-        // borderBottom: '2px solid red',
-        // display: 'none', // Valor por defecto
-        // '@media (maxWidth: 650px)': {
-        //     // display: 'block', // Se oculta en pantallas pequeñas
-        //     fontSize: '35px',
-        //     justifyContent: 'center',
-        //     borderBottom: '2px solid blue',
-        // },
-        '@media screen and (max-width: 650px)': {
-            // justifyContent: 'flex-start',
+        '@media screen and (maxWidth: 650px)': {
             alignItems: 'start',
             fontSize: '8px',
         }
