@@ -1,4 +1,3 @@
-
 import  { useState } from 'react';
 import { Box } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
@@ -10,15 +9,13 @@ import { FechaAAAAMMDD, FechaLS_AAAAMMDD } from './ConvertirFecha';
 import { OrdenFechaPrioridad } from './OrdenFechaPrioridad';
 
 export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit, setOpen, setMontarComponente }) => {
-    // const [tareaTextArea, setTareaTextArea] = useState("");
-
     const [error, setError] = useState(false);
     const [errorFech, setErrorFech] = useState (false);
     const [fechaNuevaParaLS, setFechaNuevaParaLS] = useState (tareaAEdit.fechaLim)
     let nuevaPrioridad= tareaAEdit.prioridad;
     let auxTarea = tareaAEdit.tarea;
-
     const handleChangeTarea = (e) => {
+        // setTareaTextArea(tareaAEdit.tarea)
         auxTarea = e.target.value;
         if (auxTarea.length < 3 || auxTarea.length > 50) {
             setError(true); 
@@ -36,6 +33,7 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
         if (fechaNueva < hoy) {
             setErrorFech(true);
         } else { setErrorFech(false)} 
+
     }
 
     const handleChangePrioridad = (e) => {
@@ -93,8 +91,8 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
                     style={{ width: '100%', height: '80px', paddingBlock: '10px', padding:'10px', marginInline:'25px', marginBottom:'13px'  }}
                 ></textarea>
                  <p style={{ visibility: errorFech ? "visible" : "hidden", color: 'red', fontWeight: '700', fontSize: '8px' }}>Está eligiendo una fecha del pasado</p>
-
                 <input  style= {{ marginBlock: '3px'}} type= "date" defaultValue={tareaAEdit.fechaLim} onChange={handleChangeFecha}>
+
                 </input>
                 <div style={{...formTaskStyles.inputPrior, marginBlock:'3px'}}>
                             <label htmlFor="prioridad" style={formTaskStyles.labelSmall}>Prioridad</label>

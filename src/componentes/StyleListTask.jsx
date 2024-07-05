@@ -70,7 +70,6 @@ export const tablaTaskStyles = {
     tableCell: {
         paddingInline: '3px',
         paddingBlock: '3px', 
-        position: 'relative',
     },
     centrado: {
         position: 'relative',
@@ -146,7 +145,6 @@ export const tablaTaskStyles = {
         fontSize: '10px',
         '@media (max-width: 650px)': {
            width:'100px',
-        //    alignItems:'flex-start',
         }
     },
     contPalabraPrior: {

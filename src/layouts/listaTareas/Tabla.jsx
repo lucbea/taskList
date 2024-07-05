@@ -18,12 +18,12 @@ import { FechaAAAAMMDD, FechaLS_AAAAMMDD, FechaLS_DDMMAAA } from '../../componen
 import { FechaPasada } from '../../componentes/FechaPasada';
 import { OrdenFechaPrioridad } from '../../componentes/OrdenFechaPrioridad';
 
-
 export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
     let tareasLS;
     let tareaAEditar;
     let tareaABorrar;
     let nuevasTareasOrd;
+
     const [open, setOpen] = useState(false);
     const [tareaAEdit, setTareaAEdit] = useState({});
     const [tareaABorr, setTareaABorr] = useState({})
@@ -129,7 +129,6 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                                 const alertaTiempo = FechaPasada(loc)
                                 const mje = elegirMje(alertaTiempo)
 
-
                                 return (
                                     <TableRow key={id} sx={tablaTaskStyles.tableRow}>
                                         <TableCell component="th" scope="row" sx={{ ...tablaTaskStyles.tableCell, border: '0px' }}>
@@ -186,7 +185,6 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
             )}
 
             <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} montarComponente={montarComponente} setMontarComponente={setMontarComponente} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} />
-
         </>
     );
 };

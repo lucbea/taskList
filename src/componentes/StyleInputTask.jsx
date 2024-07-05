@@ -97,8 +97,6 @@ export const formTaskStyles = {
         alignItems: 'center',
         border:'0px solid grey',
         borderRadius:'50%',
-        // marginInline:"5px",
-        // marginBottom:"46px",   //Era 6px
         fontSize:"30px",
         '&:hover': { backgroundColor: '#9cc19e63', },
     },
