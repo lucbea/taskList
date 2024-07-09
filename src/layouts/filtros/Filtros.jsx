@@ -13,7 +13,7 @@ export const Filtros = ({ tareas, setTareas, filtro, setFiltro }) => {
     };
 
     return (
-        <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width:'90px', marginBottom:'15px'}}>
+        <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', width:'90px', marginBottom:'5px'}}>
             <label htmlFor="filtro" style={{ fontSize: '8px', textAlign:'center' }}>Filtro por tareas</label>
             <select name="filtro" id="filtro" onChange={handleFiltroChange} value={filtro} style={{fontSize:'8px', padding:'3px'}} >
                 <option value="TODAS">TODAS</option>

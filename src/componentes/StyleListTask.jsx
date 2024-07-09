@@ -1,3 +1,8 @@
+
+// import {ThemeClaOsc} from '../utils/Vars'
+
+
+
 export const tablaTaskStyles = {
 
     contTitFilt: {
@@ -10,7 +15,7 @@ export const tablaTaskStyles = {
         },
     },
     tableContainer: {
-        maxHeight: '290px', 
+        // maxHeight: '290px', 
         overflowY: 'auto', 
         position: 'relative'
     },
@@ -19,9 +24,10 @@ export const tablaTaskStyles = {
     },
     tableHead: {
         position: 'sticky',
-        top: 0,
+        top: '-1px',
         zIndex: 1,
         backgroundColor: '#e2e7e3',
+        // backgroundColor: theme.palette.primary.bgTableHead,
         '@media (max-width: 650px)': { 
             position: 'relative', 
             height: '0px', 
@@ -59,7 +65,7 @@ export const tablaTaskStyles = {
 
     tableRow: {
         minWidth: '200px',
-        borderTop: '1px solid #F2F2F2',
+        // borderTop: theme.palette.primary.borderRow,
         '@media (max-width: 650px)': {
             display: 'flex',
             flexDirection: 'column',

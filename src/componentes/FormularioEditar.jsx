@@ -9,7 +9,7 @@ import { formTaskStyles } from './StyleInputTask';
 import { FechaAAAAMMDD, FechaLS_AAAAMMDD } from './ConvertirFecha';
 import { OrdenFechaPrioridad } from './OrdenFechaPrioridad';
 
-export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit, setOpen, setMontarComponente }) => {
+export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit, setOpen, setMontarComponente, theme}) => {
     const [error, setError] = useState(false);
     const [errorFech, setErrorFech] = useState (false);
     const [fechaNuevaParaLS, setFechaNuevaParaLS] = useState (tareaAEdit.fechaLim);
@@ -89,15 +89,23 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
                 noValidate
                 autoComplete="off"
             >
+<<<<<<< Updated upstream
                 <p style={{ visibility: error ? "visible" : "hidden", color: 'red', fontWeight: '700', fontSize: '8px' }}>La tarea debe tener entre 3 y 50 caracteres</p>
+=======
+                <p style={{ visibility: error ? "visible" : "hidden", color: theme.palette.primary.colorRed, fontWeight: '700', fontSize: '8px' }}>La tarea debe tener entre 3 y 50 caracteres</p>
+>>>>>>> Stashed changes
                 <textarea
                     id="filled-textarea"
                     defaultValue={tareaAEdit.tarea}
                     onChange={handleChangeTarea}
-                    style={{ width: '100%', height: '80px', paddingBlock: '10px', padding:'10px', marginInline:'25px', marginBottom:'13px'  }}
+                    style={{ width: '100%', height: '80px', paddingBlock: '10px', padding:'10px', marginInline:'25px', marginBottom:'13px', border: theme.palette.primary.borderColorInp, color: theme.palette.primary.textColor  }}
                 ></textarea>
                 <p style={{ visibility: errorFech ? "visible" : "hidden", color: 'red', fontWeight: '700', fontSize: '8px' }}>Está eligiendo una fecha del pasado</p>
+<<<<<<< Updated upstream
                 <input  style= {{ marginBlock: '3px'}} type= "date" defaultValue={tareaAEdit.fechaLim} onChange={handleChangeFecha}>
+=======
+                <input  style= {{ marginBlock: '3px', border: theme.palette.primary.borderColorInp, color: theme.palette.primary.textColor, padding:'5px' }} type= "date" defaultValue={tareaAEdit.fechaLim} onChange={handleChangeFecha}>
+>>>>>>> Stashed changes
                 </input>
                 <div style={{...formTaskStyles.inputPrior, marginBlock:'3px'}}>
                             <label htmlFor="prioridad" style={formTaskStyles.labelSmall}>Prioridad</label>
@@ -121,8 +129,8 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
                 <IconButton onClick={cancelando} type="submit" edge="end" aria-label="cancelar" sx={{ ...formTaskStyles.submitBtn, ...formTaskStyles.submitBtnRed , position:'absolute', bottom:'2px', right:'50px'}}>
                     <MdOutlineEditOff sx={{...formTaskStyles.iconoBtn}} />
                 </IconButton>
-                <IconButton onClick={editando} type="submit" edge="end" aria-label="editar" sx={{ ...formTaskStyles.submitBtn, color: '#329c32', position:'absolute', bottom:'2px', right:'2px' }}>
-                    <BsCheck2Square sx={{...formTaskStyles.iconoBtn, }} />
+                <IconButton onClick={editando} type="submit" edge="end" aria-label="editar" sx={{ ...formTaskStyles.submitBtn, color: theme.palette.primary.colorGreen, position:'absolute', bottom:'2px', right:'2px' }}>
+                    <BsCheck2Square sx={{...formTaskStyles.iconoBtn }} />
                 </IconButton>
             </Box>
         </div>

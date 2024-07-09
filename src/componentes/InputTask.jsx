@@ -10,8 +10,15 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { formTaskStyles, inputNormal, inputError } from './StyleInputTask'
 import { OrdenFechaPrioridad } from './OrdenFechaPrioridad';
+// import { useTheme } from '@mui/material/styles';
 
+<<<<<<< Updated upstream
 export const InputTask = ({ setTareas,  setFiltro }) => {
+=======
+export const InputTask = ({ setTareas,  setFiltro , theme}) => {
+    // const theme = useTheme();
+  
+>>>>>>> Stashed changes
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const [prioridad, setPrioridad] = useState(1);
@@ -41,6 +48,7 @@ export const InputTask = ({ setTareas,  setFiltro }) => {
 
     return (
         <>
+            {/* <p style={{color: theme.palette.primary.dark}}>PROBANDO</p> */}
             <form onSubmit={handleSubmit(onSubmit)} style={formTaskStyles.formCont}>
                 <Box sx={formTaskStyles.inputCont}>
                     <Box sx={formTaskStyles.tareaInput}>
@@ -97,7 +105,7 @@ export const InputTask = ({ setTareas,  setFiltro }) => {
                         </div>
                     </Box>
                 </Box>
-                <IconButton type="submit" edge="end" aria-label="grabar" sx={{...formTaskStyles.submitBtn, color: '#329c32',}} >
+                <IconButton type="submit" edge="end" aria-label="grabar" sx={{...formTaskStyles.submitBtn, color: theme.palette.primary.iconBtn ,}} >
                     <BsCheck2Square sx={formTaskStyles.iconoBtn} />
                 </IconButton>
             </form>
