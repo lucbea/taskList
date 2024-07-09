@@ -19,11 +19,7 @@ import { FechaPasada } from '../../componentes/FechaPasada';
 import { OrdenFechaPrioridad } from '../../componentes/OrdenFechaPrioridad';
 
 
-<<<<<<< Updated upstream
-export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
-=======
 export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLista, theme}) => {
->>>>>>> Stashed changes
     let tareasLS;
     let tareaAEditar;
     let tareaABorrar;
@@ -33,11 +29,6 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLi
     const [tareaABorr, setTareaABorr] = useState({})
     const [montarComponente, setMontarComponente] = useState(false);
     const [montarComponenteBorrar, setMontarComponenteBorrar] = useState(false);
-<<<<<<< Updated upstream
-
-=======
-    
->>>>>>> Stashed changes
     const handleChangeCheck = (id) => {
         let tareasLS = Recuperar();
         const nuevasTareas = tareasLS.map(tarea => {
@@ -183,11 +174,7 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLi
                     <p style={{ marginTop: '10px', textAlign: 'center', color:theme.palette.primary.colorGreenText, fontSize: '12px' }}>Modifique el filtro o ingrese una nueva tarea.</p>
                 </div>
             )}
-<<<<<<< Updated upstream
-            <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} montarComponente={montarComponente} setMontarComponente={setMontarComponente} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} />
-=======
             <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} montarComponente={montarComponente} setMontarComponente={setMontarComponente} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} theme={theme} />
->>>>>>> Stashed changes
         </>
     );
 };

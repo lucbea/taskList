@@ -21,7 +21,6 @@ import '@fontsource/roboto/700.css';
 
 
 function App() {
-  // const theme = useTheme();
   const [tareas, setTareas] = useState([]);
   const [filtro, setFiltro] = useState("TODAS");
   const [altoVentana, setAltoVentana] = useState(window.innerHeight);

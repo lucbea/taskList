@@ -3,26 +3,8 @@ import Modal from '@mui/material/Modal';
 
 import { FormularioEditar } from './FormularioEditar';
 import { MensajeBorrar } from './MensajeBorrar';
-<<<<<<< Updated upstream
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    height: '300px',
-    bgcolor: 'white',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
-
-export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTareaAEdit, tareaABorr, setTareaABorr, montarComponente, setMontarComponente, montarComponenteBorrar, setMontarComponenteBorrar }) => {
-=======
 
 
->>>>>>> Stashed changes
 
 export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTareaAEdit, tareaABorr, setTareaABorr, montarComponente, setMontarComponente, montarComponenteBorrar, setMontarComponenteBorrar, theme }) => {
 
@@ -38,7 +20,6 @@ export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTar
         width: 400,
         height: '300px',
         bgcolor: 'white',
-        // border: '2px solid #000',
         border: theme.palette.primary.borderModal,
         boxShadow: 24,
         p: 4,

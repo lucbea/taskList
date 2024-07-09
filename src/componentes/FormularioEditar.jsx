@@ -89,11 +89,7 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
                 noValidate
                 autoComplete="off"
             >
-<<<<<<< Updated upstream
-                <p style={{ visibility: error ? "visible" : "hidden", color: 'red', fontWeight: '700', fontSize: '8px' }}>La tarea debe tener entre 3 y 50 caracteres</p>
-=======
                 <p style={{ visibility: error ? "visible" : "hidden", color: theme.palette.primary.colorRed, fontWeight: '700', fontSize: '8px' }}>La tarea debe tener entre 3 y 50 caracteres</p>
->>>>>>> Stashed changes
                 <textarea
                     id="filled-textarea"
                     defaultValue={tareaAEdit.tarea}
@@ -101,11 +97,7 @@ export const FormularioEditar = ({ tareas, setTareas, tareaAEdit, setTareaAEdit,
                     style={{ width: '100%', height: '80px', paddingBlock: '10px', padding:'10px', marginInline:'25px', marginBottom:'13px', border: theme.palette.primary.borderColorInp, color: theme.palette.primary.textColor  }}
                 ></textarea>
                 <p style={{ visibility: errorFech ? "visible" : "hidden", color: 'red', fontWeight: '700', fontSize: '8px' }}>Está eligiendo una fecha del pasado</p>
-<<<<<<< Updated upstream
-                <input  style= {{ marginBlock: '3px'}} type= "date" defaultValue={tareaAEdit.fechaLim} onChange={handleChangeFecha}>
-=======
                 <input  style= {{ marginBlock: '3px', border: theme.palette.primary.borderColorInp, color: theme.palette.primary.textColor, padding:'5px' }} type= "date" defaultValue={tareaAEdit.fechaLim} onChange={handleChangeFecha}>
->>>>>>> Stashed changes
                 </input>
                 <div style={{...formTaskStyles.inputPrior, marginBlock:'3px'}}>
                             <label htmlFor="prioridad" style={formTaskStyles.labelSmall}>Prioridad</label>

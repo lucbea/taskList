@@ -1,8 +1,3 @@
-/* @import './AppStyles.jsx'; Importar las variables de tema desde AppStyles.jsx */
-
-/* body {
-  background-color: var(--primary-bgBody);
-} */
 
 *{
   margin:0;
@@ -22,8 +17,6 @@ body {
 #root {
   min-width: 250px;
   margin-inline: 15px;
-<<<<<<< Updated upstream
-=======
 }
 
 #copyright {
@@ -37,5 +30,4 @@ body {
   text-align: center;
   padding-block: 8px;
   font-family: 'roboto';
->>>>>>> Stashed changes
 }
