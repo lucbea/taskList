@@ -7,7 +7,7 @@ export const stylesModal = {
         display: 'flex', 
         flexDirection: 'column', 
         alignItems: 'center', 
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
 
 }

@@ -1,3 +1,4 @@
+
 *{
   margin:0;
   padding:0;
@@ -10,9 +11,23 @@ body {
   background-color: #F2F2F2 !important;
   height: 100vh;
   padding-top: 30px;
+  position:relative;
 }
 
 #root {
   min-width: 250px;
   margin-inline: 15px;
+}
+
+#copyright {
+  position:absolute;
+  bottom: 0px;
+  z-index:10;
+  font-size: 8px;
+  font-weight: 900;
+  background-color:#f2f2f287;
+  width: 100%;
+  text-align: center;
+  padding-block: 8px;
+  font-family: 'roboto';
 }

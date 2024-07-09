@@ -1,3 +1,4 @@
+
 export const tablaTaskStyles = {
 
     contTitFilt: {
@@ -10,7 +11,6 @@ export const tablaTaskStyles = {
         },
     },
     tableContainer: {
-        maxHeight: '290px', 
         overflowY: 'auto', 
         position: 'relative'
     },
@@ -19,7 +19,7 @@ export const tablaTaskStyles = {
     },
     tableHead: {
         position: 'sticky',
-        top: 0,
+        top: '-1px',
         zIndex: 1,
         backgroundColor: '#e2e7e3',
         '@media (max-width: 650px)': { 
@@ -59,7 +59,6 @@ export const tablaTaskStyles = {
 
     tableRow: {
         minWidth: '200px',
-        borderTop: '1px solid #F2F2F2',
         '@media (max-width: 650px)': {
             display: 'flex',
             flexDirection: 'column',

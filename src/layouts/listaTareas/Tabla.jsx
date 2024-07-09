@@ -19,7 +19,7 @@ import { FechaPasada } from '../../componentes/FechaPasada';
 import { OrdenFechaPrioridad } from '../../componentes/OrdenFechaPrioridad';
 
 
-export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
+export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLista, theme}) => {
     let tareasLS;
     let tareaAEditar;
     let tareaABorrar;
@@ -29,7 +29,6 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
     const [tareaABorr, setTareaABorr] = useState({})
     const [montarComponente, setMontarComponente] = useState(false);
     const [montarComponenteBorrar, setMontarComponenteBorrar] = useState(false);
-
     const handleChangeCheck = (id) => {
         let tareasLS = Recuperar();
         const nuevasTareas = tareasLS.map(tarea => {
@@ -103,7 +102,7 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                 <Filtros tareas={tareas} setTareas={setTareas} filtro={filtro} setFiltro={setFiltro} />
             </div>
             {tareas.length > 0 ? (
-                <TableContainer sx={tablaTaskStyles.tableContainer}>
+                <TableContainer sx={{...tablaTaskStyles.tableContainer, height:altoLista}}>
                     <Table sx={tablaTaskStyles.table} aria-label="simple table">
                         <TableHead sx={tablaTaskStyles.tableHead}>
                             <TableRow sx={tablaTaskStyles.tableRowHead}>
@@ -133,33 +132,32 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                                                     disableRipple
                                                     inputProps={{ 'aria-labelledby': labelId }}
                                                     onClick={() => handleChangeCheck(id)}
-                                                    sx={tablaTaskStyles.checkBox}
-                                                />
-                                                <p id='tareaTabla' style={{ ...tablaTaskStyles.tareaTabla, color: realizada ? '#b9c9bb' : 'black' }}>{tarea}</p>
+                                                    sx={tablaTaskStyles.checkBox}                                                />
+                                                <p id='tareaTabla' style={{ ...tablaTaskStyles.tareaTabla, color: realizada ? theme.palette.primary.colorLightGreen : theme.palette.primary.textColor }}>{tarea}</p>
                                             </div>
                                         </TableCell>
                                         <TableCell align="center" sx={tablaTaskStyles.tableCellPriorRow}>
                                             <Box sx={ tablaTaskStyles.contCellPriorRow }>
                                                 <Box sx={{ ...tablaTaskStyles.contFecha, 
-                                                color: alertaTiempo === 3 ? '#049404' : (alertaTiempo === 2 ? '#f67c2f' : (alertaTiempo === 1 ? '#ff0000' : '#b9c9bb')) }}>
+                                                color: alertaTiempo === 3 ? theme.palette.primary.colorGreenText : (alertaTiempo === 2 ? theme.palette.primary.colorOrange : (alertaTiempo === 1 ? theme.palette.primary.colorRed : theme.palette.primary.colorLightGreen)) }}>
                                                     {FechaLS_DDMMAAA(fechaLim)} <span style={{ fontSize: '8px', fontWeight: 700, textAlign: 'center', display: mje === "" ? "none": "flex" }}>{mje}</span>
                                                 </Box>
                                                 <Box sx={tablaTaskStyles.contPrior}>
                                                     <Box sx={{ ...tablaTaskStyles.contPalabraPrior }}>
-                                                        <span style={{ ...tablaTaskStyles.palabraPrior, color: realizada ? '#b9c9bb' : 'black', marginTop: '15px' }}>Prioridad </span>
+                                                        <span style={{ ...tablaTaskStyles.palabraPrior, color: realizada ? theme.palette.primary.colorLightGreen : theme.palette.primary.textColor, marginTop: '15px' }}>Prioridad </span>
                                                     </Box>
                                                     <Box sx={{ width: '55px', display: 'flex', justifyContent: 'flex-start' }}>
-                                                        <p style={{ color: realizada ? '#b9c9bb' : 'black', width: '60px', textAlign: 'left' }}>
+                                                        <p style={{ color: realizada ? theme.palette.primary.colorLightGreen : theme.palette.primary.textColor, width: '60px', textAlign: 'left' }}>
                                                             {GetPrioridadText(prioridad)}
                                                         </p>
                                                     </Box>
                                                 </Box>
                                             </Box>
                                             <Box sx={tablaTaskStyles.contIconosTabla}>
-                                                <IconButton onClick={() => editarTarea(id)} edge="end" aria-label="edit" id={editId} sx={{ ...tablaTaskStyles.iconoBtn, color: realizada ? '#b9c9bb' : 'black' }}>
+                                                <IconButton onClick={() => editarTarea(id)} edge="end" aria-label="edit" id={editId} sx={{ ...tablaTaskStyles.iconoBtn, color: realizada ? theme.palette.primary.colorLightGreen : theme.palette.primary.textColor }}>
                                                     <BsPencilSquare />
                                                 </IconButton>
-                                                <IconButton onClick={() => borrarTarea(id)} edge="end" aria-label="delete" id={deleteId} sx={{ ...tablaTaskStyles.iconoBtn, color: realizada ? '#d99595' : 'red' }}>
+                                                <IconButton onClick={() => borrarTarea(id)} edge="end" aria-label="delete" id={deleteId} sx={{ ...tablaTaskStyles.iconoBtn, color: realizada ? theme.palette.primary.colorLightRed : theme.palette.primary.colorRed }}>
                                                     <BsTrash3 />
                                                 </IconButton>
                                             </Box>
@@ -171,12 +169,12 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro }) => {
                     </Table>
                 </TableContainer>
             ) : (
-                <div style={{ border: '1px solid #c0b7b7', borderRadius: '4px', paddingBlock: '20px', paddingInline: '15px' }}>
-                    <p style={{ textAlign: 'center', color: 'red', fontSize: '15px' }}>No hay tareas para mostrar.</p>
-                    <p style={{ marginTop: '10px', textAlign: 'center', color: 'green', fontSize: '12px' }}>Modifique el filtro o ingrese una nueva tarea.</p>
+                <div style={{ border: theme.palette.primary.borderContModal2 , borderRadius: '4px', paddingBlock: '20px', paddingInline: '15px' }}>
+                    <p style={{ textAlign: 'center', color: theme.palette.primary.colorRed, fontSize: '15px' }}>No hay tareas para mostrar.</p>
+                    <p style={{ marginTop: '10px', textAlign: 'center', color:theme.palette.primary.colorGreenText, fontSize: '12px' }}>Modifique el filtro o ingrese una nueva tarea.</p>
                 </div>
             )}
-            <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} montarComponente={montarComponente} setMontarComponente={setMontarComponente} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} />
+            <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} montarComponente={montarComponente} setMontarComponente={setMontarComponente} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} theme={theme} />
         </>
     );
 };

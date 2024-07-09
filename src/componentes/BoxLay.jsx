@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
-import { Theme } from '../utils/Vars'
+import { ThemeClaOsc } from '../utils/Vars'
 
-export const BoxLay = ({ children }) => {
+export const BoxLay = ({altoTabla, theme, children }) => {
   return (
     <Box
       sx={{
         width: '100%',
-        height: 'auto',
+        maxHeight: altoTabla,
         borderRadius: '5px',
         paddingInline: '16px',
         paddingTop:'10px',
@@ -15,9 +15,12 @@ export const BoxLay = ({ children }) => {
         maxWidth: '800px',
         marginInline: 'auto',
         marginBottom:'15px',
-        bgcolor: Theme.palette.primary.main,
+        bgColor: `${theme.palette.primary.main}`,
+        bgcolor: '#FFF',
+        boxShadow: '0px 0px 6px #c6c6c6',
         transition: 'background-color 0.3s ease',
-        fontFamily: Theme.typography.fontFamily,
+        fontFamily: `${theme.typography.fontFamily}`,
+      
       }}
     >
       {children}

@@ -5,6 +5,7 @@ export const OrdenFechaPrioridad = (tareasAOrdenar) => {
         return fechaA.localeCompare(fechaB);
     });
     let tareasOrdenadasFechPrior = [];
+if (tareasAOrdenar.length >0) {  
     let parametroFecha = tareasOrdenadasFech[0].fechaLim;
     let arrayAux;
     let arrayParaReturn = [];
@@ -23,4 +24,7 @@ export const OrdenFechaPrioridad = (tareasAOrdenar) => {
         arrayParaReturn.push(...tareasOrdenadasFechPrior);
     }
     return arrayParaReturn;
+} else { 
+    return []
+}
 }
