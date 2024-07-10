@@ -38,13 +38,11 @@ Este trabajo fue desarrollado utilizando las siguientes tecnologías:
 |    :---:  |
 |Al comenzar a utilizar la App se solicita se registren las tareas, su prioridad y fecha límite de finalización. Estos datos se guardan en LocalStorage. El mismo diseño se aplica cuando, habiendo tareas, al ser filtradas, no hay tareas de ese tipo para mostrar.|
 |<img src="img/1 presentac2.png" width="700px" alt-text="Inicio de la app Lista de tareas">|
-|Cuando hay tareas registradas en Local Storage y el filtro devuelde tareas de ese tipo, el usuario obtendrá una pasntalla similar a la siguiente.
+|Cuando hay tareas registradas en Local Storage y el filtro devuelve tareas de ese tipo, el usuario obtendrá una pantalla similar a la siguiente.
 |<img src="img/1 presentac.png" width="700px" alt-text="Inicio de la app Lista de tareas">|
 
 <br>
 
-<!-- <div align= "justify">  -->
-<!-- </div> -->
 | Ingreso de tareas |
 |:---:|
 |Posibilidad de ingresar tareas, , eligiendo fecha en que tiene que estar finalizada y prioridad de realización de la tarea. Control de ingreso de texto y fecha. Al ingresar una nueva tarea el "Filtro por tareas" se inicializa en "Todas" para permitir la visualización de la tarea recién ingresada.|
