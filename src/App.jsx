@@ -72,6 +72,7 @@ function App() {
           <IngresoTarea tareas={tareas} setTareas={setTareas} filtro={filtro} setFiltro={setFiltro} theme={theme} />
           <ListaTareas tareas={tareas} setTareas={setTareas} filtro={filtro} setFiltro={setFiltro} altoTabla={altoTabla} altoLista={altoLista} theme={theme} />
         </Container>
+        {/* </Theme> */}
       </ThemeProvider>
     </>
   );
