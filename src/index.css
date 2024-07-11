@@ -1,8 +1,15 @@
+/* @import './AppStyles.jsx'; Importar las variables de tema desde AppStyles.jsx */
+
+/* body {
+  background-color: var(--primary-bgBody);
+} */
+
 *{
   margin:0;
   padding:0;
   box-sizing: border-box;
 }
+
 
 body {
   min-width: 280px;

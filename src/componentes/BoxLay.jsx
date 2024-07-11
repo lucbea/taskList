@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import { ThemeClaOsc } from '../utils/Vars'
 
 export const BoxLay = ({altoTabla, theme, children }) => {
+  console.log( theme.palette.primary.boxShadow)
   return (
     <Box
       sx={{
