@@ -20,6 +20,7 @@ export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTar
         width: 400,
         height: '300px',
         bgcolor: 'white',
+        // border: '2px solid #000',
         border: theme.palette.primary.borderModal,
         boxShadow: 24,
         p: 4,

@@ -14,7 +14,7 @@ export const ThemeClaOsc = ({ modoOsc }) => {
           main: '#52A5E0',
           bgBody: '#F2F2F2',
           bgContent: '#FFFFFF',
-          contentShadow: '0px 0px 10px 0px black',
+          boxShadow: '0px 0px 6px #c6c6c6',
           titleColor: '#000000DE',
           textColor: '#000000DE',
           bgTableHead: '#E2E7E3',
@@ -29,7 +29,7 @@ export const ThemeClaOsc = ({ modoOsc }) => {
           borderRow: '1px solid #F2F2F2',
           borderBtn:'1px solid #F2F2F2',
           iconBtn: '#329c32',
-
+         
           borderModal : '2px solid #000',
           borderContModal: '1px solid #6e6b6b',
           borderContModal2: '1px solid #c0b7b7',
@@ -52,8 +52,8 @@ export const ThemeClaOsc = ({ modoOsc }) => {
         primary: {
           main: '#52A5E0',
           bgBody: '#F2F2F2',
-          bgContent: '#FFFFFF',
-          contentShadow: '0px 0px 10px 0px black',
+          bgContent: '#111111',
+          boxShadow: '0px 0px 10px 0px #a1a1a1',
           titleColor: '#000000DE',
           textColor: '#000000DE',
           colorLightGreen: '#B9C9BB',
@@ -72,13 +72,12 @@ export const ThemeClaOsc = ({ modoOsc }) => {
 
           bgBtnClaOscHover: '#9cc19e63',
         },
-        iconButton: '#1A73E8', // Ejemplo de cambio de color iconButton basado en modoOsc
+        iconButton: '#1A73E8', 
       },
       typography: {
         fontFamily: 'roboto',
         fontWeightBold: 700,
       },
-      // Otras opciones de tema según sea necesario
     });
   }
 
