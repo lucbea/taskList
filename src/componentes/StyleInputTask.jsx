@@ -1,4 +1,5 @@
 export const formTaskStyles = {
+    
     formCont: {
         display: 'flex',
         gap: '10px',
@@ -6,7 +7,7 @@ export const formTaskStyles = {
         justifyContent: 'center',
         alignItems: 'center',
         marginTop:'6px',
-        position: 'relative'
+        position: 'relative',
     },
     
     inputCont: {

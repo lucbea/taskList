@@ -29,6 +29,7 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLi
     const [tareaABorr, setTareaABorr] = useState({})
     const [montarComponente, setMontarComponente] = useState(false);
     const [montarComponenteBorrar, setMontarComponenteBorrar] = useState(false);
+    
     const handleChangeCheck = (id) => {
         let tareasLS = Recuperar();
         const nuevasTareas = tareasLS.map(tarea => {

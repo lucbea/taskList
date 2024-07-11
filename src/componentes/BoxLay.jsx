@@ -15,9 +15,8 @@ export const BoxLay = ({altoTabla, theme, children }) => {
         maxWidth: '800px',
         marginInline: 'auto',
         marginBottom:'15px',
-        bgColor: `${theme.palette.primary.main}`,
-        bgcolor: '#FFF',
-        boxShadow: '0px 0px 6px #c6c6c6',
+        backgroundColor: `${theme.palette.primary.bgContent}`,
+        boxShadow: `${theme.palette.primary.boxShadow}`,
         transition: 'background-color 0.3s ease',
         fontFamily: `${theme.typography.fontFamily}`,
       

@@ -1,6 +1,6 @@
 //Toma fecha de local Storage AAAA-MM-DD, la convierte y la muestra con formato DD-MM-AAAA para mostrar
 export const FechaLS_DDMMAAA = (fechaGuardada) => {
-    const partes = fechaGuardada.split('-'); 
+    const partes = fechaGuardada.split('-'); // Dividir la fecha en partes por el separador '-'
     if (partes.length === 3) {
         const fechaConvertida = `${partes[2]}-${partes[1]}-${partes[0]}`;
         return fechaConvertida;
