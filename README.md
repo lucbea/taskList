@@ -26,7 +26,7 @@ Este trabajo fue desarrollado utilizando las siguientes tecnologías:
 
 ### 
 
-[¡Haz clic aquí para explorar el proyecto en tu navegador!](https://lucbea.github.io/Harry_Potter/)
+[¡Haz clic aquí para explorar el proyecto en tu navegador!](https://lucbea-tasklist.netlify.app)
 ---
 
 ##### Espero que lo disfrutes, como lo hice yo cuando lo programé!
