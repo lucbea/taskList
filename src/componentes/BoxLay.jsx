@@ -2,7 +2,6 @@ import { Box } from '@mui/material';
 import { ThemeClaOsc } from '../utils/Vars'
 
 export const BoxLay = ({altoTabla, theme, children }) => {
-  console.log( theme.palette.primary.boxShadow)
   return (
     <Box
       sx={{
@@ -17,10 +16,9 @@ export const BoxLay = ({altoTabla, theme, children }) => {
         marginInline: 'auto',
         marginBottom:'15px',
         backgroundColor: `${theme.palette.primary.bgContent}`,
-        boxShadow: `${theme.palette.primary.boxShadow}`,
+        boxShadow: `${theme.palette.primary.contentShadow}`,
         transition: 'background-color 0.3s ease',
         fontFamily: `${theme.typography.fontFamily}`,
-      
       }}
     >
       {children}

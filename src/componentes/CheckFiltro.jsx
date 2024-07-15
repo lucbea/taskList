@@ -1,10 +1,10 @@
-import { Recuperar, RecuperarFiltro } from "../layouts/localStorage/LocalStorage";
+import { Recuperar } from "../layouts/localStorage/LocalStorage";
 import { OrdenFechaPrioridad } from "./OrdenFechaPrioridad";
 
 
 export const CheckFiltroSelect = ({tareas, setTareas}) => {
-  const tareasLS = Recuperar();
-  const filtroLS = RecuperarFiltro()
+  const tareasLS = Recuperar("tareas");
+  const filtroLS = Recuperar("filtro")
   let tareasFiltradas = [];
   let tareasFiltradasOrden = [];
   switch (filtroLS) {

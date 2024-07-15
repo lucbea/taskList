@@ -1,5 +1,5 @@
-export const formTaskStyles = {
-    
+export const FormTaskStyles = ({theme}) =>  {
+    return {
     formCont: {
         display: 'flex',
         gap: '10px',
@@ -7,6 +7,7 @@ export const formTaskStyles = {
         justifyContent: 'center',
         alignItems: 'center',
         marginTop:'6px',
+        marginBottom:'10px',
         position: 'relative',
     },
     
@@ -36,6 +37,7 @@ export const formTaskStyles = {
         fontSize: '10px',
         marginBottom: '0',
         paddingLeft: '3px',
+        color:  theme.palette.primary.textColor,
     },
 
     inputStyle:{
@@ -43,16 +45,19 @@ export const formTaskStyles = {
         paddingInline: '8px',
         paddingBlock: '2px',
         fontSize: '11px',
-        border: ' 1px solid #E1DEDE',
+        border: theme.palette.primary.inputBorderColor,
         height: '25px',
         borderRadius:'3px',
+        color: theme.palette.primary.inputTextColor,
+        background: theme.palette.primary.inputBgColor,
+        
     },
 
     labelControl: {
         fontSize: '10px',
         marginBottom: '0',
         paddingLeft: '3px',
-        color:'#C72424',
+        color:  theme.palette.primary.colorRed,
         position:'absolute',
         top:'40px',
         fontWeight:'600',
@@ -95,6 +100,7 @@ export const formTaskStyles = {
     spanMinMax: {
         paddingInline: '5px',
         fontSize: '7px',
+        color: theme.palette.primary.textColor,
     },
 
     submitBtn: {
@@ -102,19 +108,19 @@ export const formTaskStyles = {
         top:'2px',
         right:'0px',
         padding: '10px',
-        width:'53px',
-        height:'50px',
+        width:'43px',
+        height:'40px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        border:'0px solid grey',
+        border: theme.palette.primary.borderBtnContNULO,
         borderRadius:'50%',
         fontSize:"30px",
-        '&:hover': { backgroundColor: '#9cc19e63', },
+        '&:hover': { backgroundColor: theme.palette.primary.hoverBtnBgClaro, },
     },
 
     submitBtnRed: {
-        color: 'red',
+        color: theme.palette.primary.colorRed,
         fonSize:'26px',
         fontWeight:'400',
         '&:hover': { backgroundColor: '#bf828275', },
@@ -130,10 +136,11 @@ export const formTaskStyles = {
         alignItems:'center',
         width: '30px',
         height:'35px',
-        color:'blue',
+        color: theme.palette.primary.iconoBtn,
 
     },
 };
+}
 
 export const inputError = {
     border:'2px double #C72424',

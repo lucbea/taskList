@@ -20,7 +20,6 @@ export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTar
         width: 400,
         height: '300px',
         bgcolor: 'white',
-        // border: '2px solid #000',
         border: theme.palette.primary.borderModal,
         boxShadow: 24,
         p: 4,
@@ -35,12 +34,12 @@ export const VentModal = ({ tareas, setTareas, open, setOpen, tareaAEdit, setTar
                 aria-labelledby="keep-mounted-modal-title"
                 aria-describedby="keep-mounted-modal-description"
             >
-                <Box sx={{ ...style, bgcolor: theme.palette.primary.bgBody, margin:'0', padding: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', minWidth: '220px', width: '90%', maxWidth: '300px', height: 'auto', border: theme.palette.primary.borderContModal, }}>
+                <Box sx={{ ...style, bgcolor: theme.palette.primary.bgBody, margin:'0', padding: '0px', display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', minWidth: '220px', width: '90%', maxWidth: '300px', height: 'auto', border: theme.palette.primary.borderContModal, boxShadow: theme.palette.primary.shadowModal  }}>
                     {montarComponente && (
                         <FormularioEditar tareas={tareas} setTareas={setTareas} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} setOpen={setOpen} montarComponente={montarComponente} setMontarComponente={setMontarComponente} theme={theme} />
                     )}
                     {montarComponenteBorrar && (
-                        <MensajeBorrar tareas={tareas} setTareas={setTareas} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} setOpen={setOpen} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar}/>
+                        <MensajeBorrar tareas={tareas} setTareas={setTareas} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} setOpen={setOpen} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} theme={theme}/>
                     )}
                 </Box>
             </Modal>
