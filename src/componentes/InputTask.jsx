@@ -1,20 +1,17 @@
 import { useState} from 'react';
 import { useForm } from "react-hook-form";
 import { Box } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-
+import { FormTaskStyles, inputNormal, inputError } from './StyleInputTask'
+import { OrdenFechaPrioridad } from './OrdenFechaPrioridad';
 import { ArmadoArrayGuardar, Guardar } from '../layouts/localStorage/LocalStorage';
-
+import IconButton from '@mui/material/IconButton';
 import { BsCheck2Square } from "react-icons/bs";
 import { v4 as uuidv4 } from 'uuid';
 
-import { formTaskStyles, inputNormal, inputError } from './StyleInputTask'
-import { OrdenFechaPrioridad } from './OrdenFechaPrioridad';
-// import { useTheme } from '@mui/material/styles';
+
 
 export const InputTask = ({ setTareas,  setFiltro , theme}) => {
-    // const theme = useTheme();
-  
+    const formTaskStyles = FormTaskStyles({ theme });
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const [prioridad, setPrioridad] = useState(1);
@@ -29,8 +26,7 @@ export const InputTask = ({ setTareas,  setFiltro , theme}) => {
     const formattedDate = `${year}-${month}-${day}`;
 
     const onSubmit = (obj) => {
-        const id = uuidv4();
-        obj.id = id;
+        obj.id = uuidv4();
         obj.realizada = false;
         obj.fechaRealiz = "";
         setPrioridad(1); 
@@ -44,7 +40,6 @@ export const InputTask = ({ setTareas,  setFiltro , theme}) => {
 
     return (
         <>
-            {/* <p style={{color: theme.palette.primary.dark}}>PROBANDO</p> */}
             <form onSubmit={handleSubmit(onSubmit)} style={formTaskStyles.formCont}>
                 <Box sx={formTaskStyles.inputCont}>
                     <Box sx={formTaskStyles.tareaInput}>

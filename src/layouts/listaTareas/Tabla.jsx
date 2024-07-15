@@ -9,8 +9,8 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import { Box } from '@mui/material';
 import { BsTrash3, BsPencilSquare } from "react-icons/bs";
-import { tablaTaskStyles } from '../../componentes/StyleListTask';
-import { Guardar, Recuperar, RecuperarFiltro } from '../localStorage/LocalStorage';
+import { TablaTaskStyles } from '../../componentes/StyleListTask';
+import { Guardar, Recuperar } from '../localStorage/LocalStorage';
 import { VentModal } from '../../componentes/Modal';
 import { Filtros } from '../filtros/Filtros';
 import { GetPrioridadText } from '../../componentes/ConversPrioridad';
@@ -29,9 +29,10 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLi
     const [tareaABorr, setTareaABorr] = useState({})
     const [montarComponente, setMontarComponente] = useState(false);
     const [montarComponenteBorrar, setMontarComponenteBorrar] = useState(false);
+    const tablaTaskStyles = TablaTaskStyles({theme})
     
     const handleChangeCheck = (id) => {
-        let tareasLS = Recuperar();
+        let tareasLS = Recuperar("tareas");
         const nuevasTareas = tareasLS.map(tarea => {
             if (tarea.id === id) {
                 return {
@@ -45,8 +46,8 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLi
         Guardar("tareas", nuevasTareas);
         setTareas(nuevasTareasOrd);
 
-        tareasLS = Recuperar();
-        let filtroLS = RecuperarFiltro();
+        tareasLS = Recuperar("tareas");
+        let filtroLS = Recuperar("filtro");
         let tareasFiltradas = [];
         switch (filtroLS) {
             case 'TODAS':
@@ -66,7 +67,7 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLi
     };
 
     const editarTarea = (id) => {
-        tareasLS = Recuperar();
+        tareasLS = Recuperar("tareas");
         tareaAEditar = tareasLS.find(tarea => tarea.id === id);
         setTareaAEdit(tareaAEditar);
         setOpen(true);
@@ -74,7 +75,7 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLi
     };
 
     const borrarTarea = (id) => {
-        tareasLS = Recuperar();
+        tareasLS = Recuperar("tareas");
         tareaABorrar = tareasLS.find(tarea => tarea.id === id);
         setTareaABorr(tareaABorrar);
         setOpen(true);
@@ -99,8 +100,8 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLi
     return (
         <>
             <div style={tablaTaskStyles.contTitFilt}>
-                <h5>LISTA  DE  TAREAS</h5>
-                <Filtros tareas={tareas} setTareas={setTareas} filtro={filtro} setFiltro={setFiltro} />
+                <h5 style={{color: theme.palette.primary.textColor}}>LISTA  DE  TAREAS</h5>
+                <Filtros tareas={tareas} setTareas={setTareas} filtro={filtro} setFiltro={setFiltro} theme={theme}/>
             </div>
             {tareas.length > 0 ? (
                 <TableContainer sx={{...tablaTaskStyles.tableContainer, height:altoLista}}>
@@ -109,8 +110,8 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLi
                             <TableRow sx={tablaTaskStyles.tableRowHead}>
                                 <TableCell sx={tablaTaskStyles.tableCellTarea}>Tarea</TableCell>
                                 <TableCell align="center" sx={tablaTaskStyles.tableCellPriorHead}>
-                                    <div style={{ fontSize: '14px', width: '85px', display: 'flex', alignItems:'center' }}>Fecha Límite</div>
-                                    <div style={{ fontSize: '14px', width: '95px', paddingLeft: '10px', display: 'flex', alignItems:'center' }}>Prioridad</div>
+                                    <div style={{ fontSize: '14px', width: '85px', display: 'flex', alignItems:'center', color: theme.palette.primary.textColor }}>Fecha Límite</div>
+                                    <div style={{ fontSize: '14px', width: '95px', paddingLeft: '10px', display: 'flex', alignItems:'center', color: theme.palette.primary.textColor }}>Prioridad</div>
                                 </TableCell>
                             </TableRow>
                         </TableHead>
@@ -170,9 +171,9 @@ export const Tabla = ({ tareas, setTareas, filtro, setFiltro, altoTabla , altoLi
                     </Table>
                 </TableContainer>
             ) : (
-                <div style={{ border: theme.palette.primary.borderContModal2 , borderRadius: '4px', paddingBlock: '20px', paddingInline: '15px' }}>
+                <div style={{ border: theme.palette.primary.borderContModal, borderRadius: '4px', paddingBlock: '20px', paddingInline: '15px' }}>
                     <p style={{ textAlign: 'center', color: theme.palette.primary.colorRed, fontSize: '15px' }}>No hay tareas para mostrar.</p>
-                    <p style={{ marginTop: '10px', textAlign: 'center', color:theme.palette.primary.colorGreenText, fontSize: '12px' }}>Modifique el filtro o ingrese una nueva tarea.</p>
+                    <p style={{ marginTop: '10px', textAlign: 'center', color:theme.palette.primary.colorGreenText, fontSize: '12px', textShadow: theme.palette.primary.textShadow }}>Modifique el filtro o ingrese una nueva tarea.</p>
                 </div>
             )}
             <VentModal tareas={tareas} setTareas={setTareas} open={open} setOpen={setOpen} tareaAEdit={tareaAEdit} setTareaAEdit={setTareaAEdit} tareaABorr={tareaABorr} setTareaABorr={setTareaABorr} montarComponente={montarComponente} setMontarComponente={setMontarComponente} montarComponenteBorrar={montarComponenteBorrar} setMontarComponenteBorrar={setMontarComponenteBorrar} theme={theme} />

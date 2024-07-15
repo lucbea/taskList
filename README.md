@@ -91,6 +91,16 @@ Mensaje de confirmación de eliminación para tarea realizada.|Mensaje de confir
 |<img src="img/6 borrar.png" width="400px" alt-text="Footer">| <img src="img/7 borrar.png" width="400px" alt-text="Ingreso de tarea">|
 
 
+<br>
+
+| Modos claro y oscuro. |
+|:---:|
+|La aplicación permite visualización en modo claro y modo oscuro, a elección del usuario. Al inicializar toma de Local Storage el modo de trabajo guardado. El modo de trabajo por defecto es claro.|
+||
+
+Modo claro.|Modo oscuro|
+|    :---:  |   :---:  |
+|<img src="img/8modoClaro.png" width="400px" alt-text="Footer">| <img src="img/8modoOscuro.png" width="400px" alt-text="Ingreso de tarea">|
 
 <br>
 

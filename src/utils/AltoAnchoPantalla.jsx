@@ -1,12 +1,12 @@
 
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 
 export const AltoAnchoPantalla = ({ altoVentana, setAltoVentana, anchoVentana, setAnchoVentana, altoTabla, setAltoTabla, altoLista, setAltoLista, tamanioContTabla, setTamanioContTabla }) => {
 
-    let alto = 3;
-    let ancho = 3;
-    let auxAltoTabla = 1;
-    let auxAltoLista = 1;
+    // let alto = 3;
+    // let ancho = 3;
+    // let auxAltoTabla = 1;
+    // let auxAltoLista = 1;
 
     useEffect(() => {
         if (tamanioContTabla) {
@@ -25,11 +25,12 @@ export const AltoAnchoPantalla = ({ altoVentana, setAltoVentana, anchoVentana, s
                 let auxAltoTabla, auxAltoLista;
                 if (ancho > 650) {
                     auxAltoTabla = alto - 220;
-                    auxAltoLista = auxAltoTabla - 50;
+                    auxAltoLista = auxAltoTabla - 65;
                 } else {
-                    auxAltoTabla = alto - 260;
-                    auxAltoLista = auxAltoTabla - 50;
+                    auxAltoTabla = alto - 240;
+                    auxAltoLista = auxAltoTabla - 85;
                 }
+
                 setAltoTabla(auxAltoTabla);
                 setAltoLista(auxAltoLista);
             };
@@ -41,7 +42,6 @@ export const AltoAnchoPantalla = ({ altoVentana, setAltoVentana, anchoVentana, s
             };
 
             window.addEventListener('resize', handleResize);
-
             return () => {
                 window.removeEventListener('resize', handleResize);
             };
